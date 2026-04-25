@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生団体 connec+a（コネクタ） | 次世代在留外国人支援</title>
+    <meta name="description" content="交流・情報・環境の3軸で「群戦略」を展開し、次世代在留外国人支援エコシステムを構築する学生団体 connec+a（コネクタ）の公式ウェブサイトです。">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-light: #FF9B73;
+            --secondary: #F7C548;
+            --accent: #00A6ED;
+            --bg-color: #F8FAFC;
+            --surface: #FFFFFF;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --gradient-warm: linear-gradient(135deg, #FF6B35 0%, #F7C548 100%);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.3;
+            color: var(--text-main);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.05;
+            background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(0);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Overview Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Challenges Section */
+        .challenges-section {
+            background: var(--text-main);
+            color: white;
+            position: relative;
+        }
+
+        .challenges-section .section-title {
+            color: white;
+        }
+
+        .challenges-section .section-subtitle {
+            color: #94A3B8;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .challenge-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .challenge-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .challenge-card ul {
+            list-style: none;
+        }
+
+        .challenge-card li {
+            margin-bottom: 0.8rem;
+            color: #CBD5E1;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .challenge-card li i {
+            color: var(--primary-light);
+            margin-top: 5px;
+        }
+
+        /* Business Section */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .business-card {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .b-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 166, 237, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        /* Culture Section */
+        .culture-section {
+            background: linear-gradient(to right, #FFF4F0, #F0FBFF);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-warm);
+            color: white;
+            text-align: center;
+            border-radius: 30px;
+            margin: 4rem auto;
+            max-width: 1000px;
+            padding: 4rem 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 2rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-main);
+            color: #94A3B8;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+
+            .hero-container,
+            .business-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .challenges-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                /* simple mobile handling */
+            }
+        }
+
+        /* ===== Scroll Reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1),
+                        transform 0.9s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ===== Stagger Children ===== */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(28px) scale(0.97);
+            transition: opacity 0.6s cubic-bezier(0.2,0.8,0.2,1),
+                        transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .reveal.active .stagger-item,
+        .stagger-item.active { opacity: 1; transform: translateY(0) scale(1); }
+        .stagger-item:nth-child(1) { transition-delay: 0.05s; }
+        .stagger-item:nth-child(2) { transition-delay: 0.15s; }
+        .stagger-item:nth-child(3) { transition-delay: 0.25s; }
+        .stagger-item:nth-child(4) { transition-delay: 0.35s; }
+        .stagger-item:nth-child(5) { transition-delay: 0.45s; }
+
+        /* ===== Hero Entrance ===== */
+        .hero-content .badge  { animation: fadeUp 0.7s 0.1s ease-out both; }
+        .hero-content h1      { animation: fadeUp 0.9s 0.2s ease-out both; }
+        .hero-content p       { animation: fadeUp 0.9s 0.4s ease-out both; }
+        .hero-content .btn    { animation: fadeUp 0.9s 0.6s ease-out both; }
+        .hero-img-container   { animation: fadeLeft 1.1s 0.3s ease-out both; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeLeft {
+            from { opacity: 0; transform: translateX(40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ===== Floating Orbs ===== */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
+            top: -100px; right: -100px;
+            animation: orbFloat 14s ease-in-out infinite;
+        }
+        .orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(247,197,72,0.14) 0%, transparent 70%);
+            bottom: 0; left: -80px;
+            animation: orbFloat 18s ease-in-out infinite;
+            animation-delay: -6s;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33%       { transform: translate(30px,-40px) scale(1.05); }
+            66%       { transform: translate(-20px,20px) scale(0.97); }
+        }
+
+        /* ===== 3D Tilt Cards ===== */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+        .tilt-card:hover { box-shadow: 0 24px 48px rgba(0,0,0,0.18); }
+
+        /* ===== Challenge Icon Glow ===== */
+        .challenge-icon { animation: iconGlow 3s ease-in-out infinite; }
+        @keyframes iconGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.35); }
+            50%       { box-shadow: 0 0 0 12px rgba(255,107,53,0); }
+        }
+
+        /* ===== Value Card Hover ===== */
+        .value-card {
+            transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1),
+                        box-shadow 0.35s ease;
+        }
+        .value-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: var(--shadow-lg); }
+
+        /* ===== Ripple Button ===== */
+        .btn { position: relative; overflow: hidden; }
+        .btn .ripple {
+            position: absolute; border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            transform: scale(0);
+            animation: rippleAnim 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+        /* ===== Navbar Shrink ===== */
+        nav { transition: padding 0.4s ease, box-shadow 0.4s ease; }
+        nav.scrolled { padding: 0.4rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        nav.scrolled .logo img { height: 32px; }
+        .logo img { transition: height 0.4s ease; }
+
+        /* ===== Section Title Underline ===== */
+        .section-title::after {
+            content: '';
+            display: block;
+            height: 4px; width: 0;
+            background: var(--gradient-warm);
+            border-radius: 4px;
+            margin: 0.5rem auto 0;
+            transition: width 1s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .reveal.active .section-title::after,
+        .section-title.line-active::after { width: 60%; }
+
+        /* ===== Misc ===== */
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease !important; }
+        .hover-lift:hover { transform: translateY(-8px) scale(1.02) !important; }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.05); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="connect+a.png" alt="connec+a">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">団体概要</a></li>
+                <li><a href="#challenges">社会課題</a></li>
+                <li><a href="#services">事業内容</a></li>
+                <li><a href="#culture">カルチャー</a></li>
+                <li><a href="#recruit">採用・支援</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">Organization Deck</div>
+                <h1>次世代在留外国人支援<br>エコシステムを構築する</h1>
+                <p>交流・情報・環境の3軸で”群戦略”を展開し、<br>文化の進化的継承を牽引する学生団体です。</p>
+                <p><strong>- Leading the evolutionary continuity of culture -</strong></p>
+                <a href="#about" class="btn" style="background: var(--gradient-warm); color: white;">詳しく知る</a>
+            </div>
+            <div class="hero-img-container">
+                <img src="C:/Users/nohr7/.gemini/antigravity/brain/1a6f5ac0-ad47-41db-a8cd-84238a478644/connecta_hero_banner_1776862921155.png"
+                    alt="connec+a concept" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="about" class="container reveal" style="padding-top: 8rem;">
+        <div style="text-align: center;">
+            <h2 class="section-title">01. Overview</h2>
+            <p class="section-subtitle">学生団体 connec+a（コネクタ）について</p>
+        </div>
+
+        <div class="glass-card" style="margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-circle-info"></i> 基本情報
+                    </h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.5rem;"><strong>設立:</strong> 2025年11月</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>役員:</strong> 代表 菊地 隆輝 ／ 副代表 宮崎 こはる</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>事業:</strong> 在留外国人支援事業</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>関連団体:</strong> 特定非営利活動法人Curiosity</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>活動拠点:</strong> 東京・大阪・オンライン</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-seedling"></i> 実績と展開
+                    </h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.5rem;"><strong>資金調達:</strong> クラウドファンディングで51万円達成 (達成率100%超)</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>イベント:</strong> Co-Creation LAB（Co-lab）始動。神谷町「COCO
+                            JAPAN」にて定期開催中。</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>アワード:</strong> 東京都教育委員会後援プログラム等で「大賞」「入賞」獲得。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card glass-card stagger-item">
+                <i class="fa-solid fa-users"></i>
+                <h3>49名</h3>
+                <p>メンバー数<br><small>(高校生26/大20/社会人3)</small></p>
+            </div>
+            <div class="stat-card glass-card stagger-item">
+                <i class="fa-solid fa-earth-americas"></i>
+                <h3>33ヶ国</h3>
+                <p>参加者の国籍</p>
+            </div>
+            <div class="stat-card glass-card stagger-item">
+                <i class="fa-solid fa-face-smile"></i>
+                <h3>92%</h3>
+                <p>参加者満足度</p>
+            </div>
+            <div class="stat-card glass-card stagger-item">
+                <i class="fa-solid fa-calendar-check"></i>
+                <h3>414名</h3>
+                <p>イベント総参加者数</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section id="challenges" class="challenges-section reveal">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">02. 取り組む課題</h2>
+                <p class="section-subtitle">日本社会における外国人孤立化の解消へ</p>
+            </div>
+
+            <div
+                style="background: rgba(0,0,0,0.2); padding: 2rem; border-radius: 20px; margin-bottom: 3rem; text-align: center;" class="reveal">
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">増加する在留外国人と、深まる「孤立」</h3>
+                <p style="color: #E2E8F0; margin-bottom: 1rem;">在留外国人数: <strong>412.5万人</strong> (前年比 +35万人)</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 50px;"><i
+                            class="fa-solid fa-triangle-exclamation" style="color:var(--primary)"></i>
+                        留学生の約7割が継続的な交流なし</span>
+                    <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 50px;"><i
+                            class="fa-solid fa-triangle-exclamation" style="color:var(--primary)"></i>
+                        日本人の73%が外国人との交流なし</span>
+                </div>
+            </div>
+
+            <div class="challenges-grid">
+                <!-- 交流 -->
+                <div class="challenge-card stagger-item">
+                    <div class="challenge-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h3>1. 「交流」の課題</h3>
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #94A3B8;">個人同士が出会い協働する“場”の設計が不十分</p>
+                    <ul>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>心の壁:</strong> 心理的負担から深い関係に踏み込めない</li>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>言語の壁:</strong> 会話量が不足し実践経験が積めない</li>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>機会の壁:</strong> 継続的な交流機会が少ない</li>
+                    </ul>
+                </div>
+                <!-- 情報 -->
+                <div class="challenge-card stagger-item">
+                    <div class="challenge-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <h3>2. 「情報」の課題</h3>
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #94A3B8;">情報の取得〜行動までの流れが不十分</p>
+                    <ul>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>取得:</strong> 分散した情報源で一次情報が見つからない</li>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>理解:</strong> 難解な行政用語で判断分岐が不明</li>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>活用:</strong> 手続きが複雑で行動に繋がらない</li>
+                    </ul>
+                </div>
+                <!-- 環境 -->
+                <div class="challenge-card stagger-item">
+                    <div class="challenge-icon"><i class="fa-solid fa-city"></i></div>
+                    <h3>3. 「環境」の課題</h3>
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem; color: #94A3B8;">鎖国的コミュニティの拡大と対立の激化</p>
+                    <ul>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>未整備:</strong> 自治体の制度・運用が急増に追いつかない</li>
+                        <li><i class="fa-solid fa-xmark"></i> <strong>孤立化:</strong> 交流不足で既住人との対立を招く</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container reveal" style="padding-top: 8rem;">
+        <div style="text-align: center;">
+            <h2 class="section-title">03. 事業内容</h2>
+            <p class="section-subtitle">交流・情報・環境の包括的支援</p>
+        </div>
+
+        <div class="glass-card stagger-item"
+            style="text-align: center; margin-bottom: 3rem; background: var(--gradient-warm); color: white; border: none;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: white;">アプローチの思想：「更新としての継承」</h3>
+            <p style="font-size: 1.1rem; opacity: 0.9;">
+                私たちは「同化」を強要するのではなく、互いの良さを取り入れ融合させることを目指します。<br>
+                出会いの「場」、通じ合う「言葉」、社会の「仕組み」を支援として設計し、小さな接点が地域発展へと繋がる流れを作ります。<br>
+                <strong>「群戦略」</strong>により、複数事業でシナジーを創出し、指数関数的な成長を目指します。
+            </p>
+        </div>
+
+        <h3 class="stagger-item" style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">３つの事業セグメント</h3>
+
+        <div class="business-grid">
+            <div class="glass-card business-card tilt-card stagger-item">
+                <div class="b-icon"><i class="fa-solid fa-handshake"></i></div>
+                <div>
+                    <h4 style="font-size: 1.25rem; color: var(--primary); margin-bottom: 0.5rem;">1. 交流推進事業</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+                        日英両言語での運営と低障壁な価格設定で継続的な関係を構築</p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li><strong>IF Tour:</strong> 500円で参加可能な二日間型交流イベント（座談会・日帰り観光）</li>
+                        <li><strong>Ordermade (OM):</strong> 日本語学校向けカスタマイズ交流イベント</li>
+                        <li><strong>connec+a community (CC):</strong> Discord等を活用した熱量を保つオンラインの場</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card business-card tilt-card stagger-item">
+                <div class="b-icon" style="background: rgba(247, 197, 72, 0.1); color: var(--secondary);"><i
+                        class="fa-solid fa-mobile-screen"></i></div>
+                <div>
+                    <h4 style="font-size: 1.25rem; color: var(--secondary); margin-bottom: 0.5rem;">2. 情報プラットフォーム事業</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+                        生活情報からイベント情報までを網羅するデジタルプラットフォーム</p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li><strong>connec+a hub:</strong> 3層表示（原文・やさしい日本語・多言語）やAI伴走機能を備えたアプリ/Web</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card business-card tilt-card stagger-item" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+                <div class="b-icon" style="background: rgba(30, 41, 59, 0.1); color: var(--text-main);"><i
+                        class="fa-solid fa-building-columns"></i></div>
+                <div>
+                    <h4 style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 0.5rem;">3. 公共コンサルティング事業</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">一次データを用いて、政策・運用に直結させる
+                    </p>
+                    <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                        <li><strong>Public Affairs (PA事業):</strong> 自治体向けコンサルティング。住民の行動ログ等から地域課題マップを作成。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="culture-section reveal">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">04. カルチャー</h2>
+                <p class="section-subtitle">人が環境をつくり、環境が人をつくる。</p>
+            </div>
+
+            <div class="stagger-item" style="text-align: center; margin-bottom: 4rem;">
+                <p style="font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem;">
+                    「議論よりもまず一歩。完璧さよりも前進。」
+                </p>
+                <p style="color: var(--text-muted);">行動が熱意を生み、その熱意が人を惹きつける正のスパイラルを日常の当たり前にする。</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card stagger-item">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"><i
+                            class="fa-solid fa-bullseye"></i></div>
+                    <h3 style="margin-bottom: 1rem;">Goal Oriented Philosophy</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">常にゴールを見据える。どんな小さな行動も目的に繋がっている。</p>
+                </div>
+                <div class="value-card stagger-item" style="border-color: var(--secondary);">
+                    <div style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"><i
+                            class="fa-solid fa-fire"></i></div>
+                    <h3 style="margin-bottom: 1rem;">Sense of Ownership</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">自分ごととして挑む。違いを超えて仲間と成果を作る。</p>
+                </div>
+                <div class="value-card stagger-item" style="border-color: var(--accent);">
+                    <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1rem;"><i
+                            class="fa-solid fa-route"></i></div>
+                    <h3 style="margin-bottom: 1rem;">Be Inefficient</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">偶発から価値を創造する。非効率な遠回りの中にこそ新しい価値が生まれる。</p>
+                </div>
+            </div>
+
+            <div class="glass-card stagger-item" style="margin-top: 3rem; text-align: center;">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">組織の特徴・働き方</h3>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <span class="badge"
+                        style="background: var(--bg-color); color: var(--text-main); border: 1px solid var(--border);">🎓
+                        学生主体 (学業優先)</span>
+                    <span class="badge"
+                        style="background: var(--bg-color); color: var(--text-main); border: 1px solid var(--border);">🤝
+                        フラットな環境</span>
+                    <span class="badge"
+                        style="background: var(--bg-color); color: var(--text-main); border: 1px solid var(--border);">🏆
+                        MVP制度</span>
+                    <span class="badge"
+                        style="background: var(--bg-color); color: var(--text-main); border: 1px solid var(--border);">💻
+                        PC貸与・AI研修</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruit & Partner Section -->
+    <section id="recruit" class="container">
+        <div class="cta-section">
+            <h2>Join Us & Support Us</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">私たちは、圧倒的にギブし、共に価値を創造できる仲間とパートナーを探しています。</p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left; margin-bottom: 2rem;">
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px;">
+                    <h3
+                        style="color: white; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
+                        <i class="fa-solid fa-user-plus"></i> 学生メンバー募集</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">「connec+aという環境を自分の人生の目標に対して使い倒すことができること」を重視します。
+                    </p>
+                    <ul style="font-size: 0.9rem; margin-left: 1rem; margin-bottom: 1rem;">
+                        <li>ビジョンへの共感と意欲</li>
+                        <li>異文化理解とコミュニケーション能力</li>
+                        <li>語学能力 / イベント企画経験</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px;">
+                    <h3
+                        style="color: white; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
+                        <i class="fa-solid fa-handshake-angle"></i> 賛同者様・支援者様へ</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">集客、運営費、連携先、開発ナレッジなど、様々な面でのサポートを必要としています。</p>
+                    <ul style="font-size: 0.9rem; margin-left: 1rem;">
+                        <li>在留外国人へのリーチ・繋がり</li>
+                        <li>国際交流イベント運営ナレッジの共有</li>
+                        <li>学生層とのコネクション活用（就活案内・テストマーケティング等）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="font-weight: 700; font-size: 1.2rem;">ご関心をお持ちの方は、ぜひ賛同人としてのご参加をご検討ください。</p>
+            <a href="#" class="btn">お問い合わせ・エントリー</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">Strategy 2026</h3>
+            <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+                NPO法人として「人と人が出会い、関係を深める場づくり」を継続しつつ、<br>
+                株式会社connec+aを中心とした「connec+a Group」を創設。<br>
+                情報プラットフォーム事業と公共コンサルティング事業を展開し、社会への価値提供を拡大します。
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 1.5rem;">
+                <img src="connect+a.png" alt="connec+a" style="height: 50px; width: auto;">
+            </div>
+            <p style="margin-bottom: 2rem;">Leading the evolutionary continuity of culture</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                <a href="#" style="color: #94A3B8; font-size: 1.5rem; transition: color 0.3s;"><i
+                        class="fa-brands fa-twitter"></i></a>
+                <a href="#" style="color: #94A3B8; font-size: 1.5rem; transition: color 0.3s;"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="#" style="color: #94A3B8; font-size: 1.5rem; transition: color 0.3s;"><i
+                        class="fa-brands fa-discord"></i></a>
+            </div>
+            <p style="font-size: 0.9rem;">&copy; 2025 学生団体 connec+a. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Once animated, we can stop observing if we want it to stay
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
