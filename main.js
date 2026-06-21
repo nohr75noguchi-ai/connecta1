@@ -58,3 +58,84 @@ function drawPentaLines(){
 }
 window.addEventListener('load',drawPentaLines);
 window.addEventListener('resize',drawPentaLines);
+
+// ─── GAS endpoint ───────────────────────────────────────────────────────────
+// GASをデプロイしたら下記のURLを差し替えてください
+const GAS_URL='YOUR_GAS_DEPLOY_URL';
+
+// ─── お知らせ ────────────────────────────────────────────────────────────────
+async function loadNews(){
+  const list=document.getElementById('newsList');
+  if(!list)return;
+  try{
+    const items=await fetch('data/news.json').then(r=>r.json());
+    if(!items.length){list.innerHTML='<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせはありません</p>';return;}
+    list.innerHTML=items.map(n=>`
+      <div class="news-item">
+        <span class="news-date">${n.date}</span>
+        <span class="news-cat cat-${n.category}">${n.category}</span>
+        ${n.link?`<a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>`:`<span>${n.title}</span>`}
+      </div>`).join('');
+  }catch(e){list.innerHTML='<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせを読み込めませんでした</p>';}
+}
+document.addEventListener('DOMContentLoaded',loadNews);
+
+// ─── note記事 ────────────────────────────────────────────────────────────────
+async function loadNoteArticles(){
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_DEPLOY_URL')return;
+  const sec=document.getElementById('noteSection');
+  const grid=document.getElementById('noteGrid');
+  if(!sec||!grid)return;
+  try{
+    const articles=await fetch(GAS_URL).then(r=>r.json());
+    if(!articles.length)return;
+    sec.style.display='';
+    grid.innerHTML=articles.map(a=>`
+      <div class="note-card fade-in">
+        <a href="${a.link}" target="_blank" rel="noopener">
+          <div class="note-thumb"${a.thumb?` style="background-image:url('${a.thumb}')"`:''}></div>
+          <div class="note-body">
+            <p class="note-title">${a.title}</p>
+            <span class="note-date">${new Date(a.date).toLocaleDateString('ja-JP')}</span>
+          </div>
+        </a>
+      </div>`).join('');
+  }catch(e){}
+}
+document.addEventListener('DOMContentLoaded',loadNoteArticles);
+
+// ─── お問い合わせフォーム ────────────────────────────────────────────────────
+async function submitContact(e){
+  e.preventDefault();
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_DEPLOY_URL'){
+    showContactMsg('GAS_URLが未設定です。main.jsのGAS_URLを設定してください。','error');
+    return;
+  }
+  const btn=document.getElementById('cfSubmitBtn');
+  const form=e.target;
+  btn.disabled=true;btn.textContent='送信中...';
+  const body={
+    name:form.name.value.trim(),
+    email:form.email.value.trim(),
+    subject:form.subject.value.trim(),
+    message:form.message.value.trim()
+  };
+  try{
+    const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(body)});
+    const data=await res.json();
+    if(data.status==='ok'){
+      form.reset();
+      showContactMsg('お問い合わせを受け付けました。ありがとうございます。','success');
+    }else{throw new Error();}
+  }catch(err){
+    showContactMsg('送信に失敗しました。しばらく経ってから再度お試しください。','error');
+  }finally{
+    btn.disabled=false;btn.textContent='送信する';
+  }
+}
+function showContactMsg(text,type){
+  const el=document.getElementById('contactMsg');
+  el.textContent=text;
+  el.className=type==='success'?'contact-success':'contact-error';
+  el.style.display='block';
+}

@@ -31,9 +31,9 @@
 
 <nav class="nav scrolled" id="mainNav"><div class="nav-inner">
   <a class="nav-logo" href="#" onclick="goPage(0);return false"><span class="c1">connec</span><span class="c2">+a</span></a>
-  <div class="nav-links"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">課題</a><a href="#" onclick="goPage(2);return false" data-page="2">事業内容</a><a href="#" onclick="goPage(3);return false" data-page="3">戦略</a><a href="#" onclick="goPage(4);return false" data-page="4">カルチャー</a></div>
+  <div class="nav-links"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">課題</a><a href="#" onclick="goPage(2);return false" data-page="2">事業内容</a><a href="#" onclick="goPage(3);return false" data-page="3">戦略</a><a href="#" onclick="goPage(4);return false" data-page="4">カルチャー</a><a href="#" onclick="goPage(5);return false" data-page="5">お問い合わせ</a></div>
   <button class="nav-hamburger" onclick="toggleMobile()">&#9776;</button>
-</div><div class="nav-mobile" id="navMobile"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">課題</a><a href="#" onclick="goPage(2);return false" data-page="2">事業内容</a><a href="#" onclick="goPage(3);return false" data-page="3">戦略</a><a href="#" onclick="goPage(4);return false" data-page="4">カルチャー</a></div></nav>
+</div><div class="nav-mobile" id="navMobile"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">課題</a><a href="#" onclick="goPage(2);return false" data-page="2">事業内容</a><a href="#" onclick="goPage(3);return false" data-page="3">戦略</a><a href="#" onclick="goPage(4);return false" data-page="4">カルチャー</a><a href="#" onclick="goPage(5);return false" data-page="5">お問い合わせ</a></div></nav>
 
 <!-- PAGE 0 -->
 <div class="page active" id="page-0">
@@ -67,6 +67,17 @@
         <img src="images/leader.jpg" alt="代表挨拶" style="width:100%;height:auto;display:block" onerror="this.parentElement.innerHTML='<div style=\'padding:48px 32px;text-align:center;color:var(--text-muted);font-size:15px\'>代表挨拶の画像をここに配置<br><span style=\'font-size:13px;color:var(--text-muted)\'>img の src に画像パスを指定してください</span></div>'">
       </div>
     </div>
+  </div></div>
+  <div class="section"><div class="section-inner">
+    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">お知らせ</h2></div>
+    <div class="card fade-in" id="newsList" style="padding:8px 28px">
+      <p style="color:var(--text-muted);font-size:15px;padding:16px 0">読み込み中...</p>
+    </div>
+  </div></div>
+  <div class="section" id="noteSection" style="display:none"><div class="section-inner">
+    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">note</h2></div>
+    <div class="grid grid-3" id="noteGrid"></div>
+    <a href="https://note.com/NOTE_USERNAME" target="_blank" rel="noopener" class="note-more">noteでもっと見る →</a>
   </div></div>
 </div>
 
@@ -210,7 +221,40 @@
   </div></div>
 </div>
 
-<footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo"><span class="c1">connec</span><span class="c2">+a</span></div><p class="footer-desc">学生団体connec+a<br>Leading the evolutionary continuity of culture</p></div><div class="footer-links"><a href="#" onclick="goPage(0);return false">TOP</a><a href="#" onclick="goPage(1);return false">課題</a><a href="#" onclick="goPage(2);return false">事業内容</a><a href="#" onclick="goPage(3);return false">戦略</a><a href="#" onclick="goPage(4);return false">カルチャー</a></div></div><div class="footer-bottom"><p>&copy;2026 connec+a All rights reserved.</p></div></div></footer>
+<!-- PAGE 5 -->
+<div class="page" id="page-5">
+  <div style="height:64px"></div>
+  <div class="section"><div class="section-inner">
+    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">お問い合わせ</h2></div>
+    <div style="max-width:640px;margin:0 auto">
+      <p class="fade-in" style="font-size:16px;color:var(--text-sub);line-height:1.9;margin-bottom:32px">
+        メールでのお問い合わせ：<a href="mailto:CONTACT_EMAIL" style="color:var(--blue);font-weight:600">CONTACT_EMAIL</a>
+      </p>
+      <form class="contact-form fade-in" id="contactForm" onsubmit="submitContact(event)">
+        <div class="cf-field">
+          <label class="cf-label" for="cfName">お名前 <span class="cf-req">*</span></label>
+          <input class="cf-input" id="cfName" name="name" type="text" required placeholder="山田 太郎">
+        </div>
+        <div class="cf-field">
+          <label class="cf-label" for="cfEmail">メールアドレス <span class="cf-req">*</span></label>
+          <input class="cf-input" id="cfEmail" name="email" type="email" required placeholder="example@email.com">
+        </div>
+        <div class="cf-field">
+          <label class="cf-label" for="cfSubject">件名 <span class="cf-req">*</span></label>
+          <input class="cf-input" id="cfSubject" name="subject" type="text" required placeholder="お問い合わせ件名">
+        </div>
+        <div class="cf-field">
+          <label class="cf-label" for="cfMessage">お問い合わせ内容 <span class="cf-req">*</span></label>
+          <textarea class="cf-input" id="cfMessage" name="message" required rows="6" placeholder="お問い合わせ内容をご記入ください"></textarea>
+        </div>
+        <button class="cf-submit" type="submit" id="cfSubmitBtn">送信する</button>
+      </form>
+      <div id="contactMsg" style="display:none;margin-top:20px;padding:16px 20px;border-radius:12px;font-size:15px;text-align:center"></div>
+    </div>
+  </div></div>
+</div>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo"><span class="c1">connec</span><span class="c2">+a</span></div><p class="footer-desc">学生団体connec+a<br>Leading the evolutionary continuity of culture</p></div><div class="footer-links"><a href="#" onclick="goPage(0);return false">TOP</a><a href="#" onclick="goPage(1);return false">課題</a><a href="#" onclick="goPage(2);return false">事業内容</a><a href="#" onclick="goPage(3);return false">戦略</a><a href="#" onclick="goPage(4);return false">カルチャー</a><a href="#" onclick="goPage(5);return false">お問い合わせ</a></div></div><div class="footer-bottom"><p>&copy;2026 connec+a All rights reserved.</p></div></div></footer>
 
 <script src="main.js" defer></script>
 </body>
