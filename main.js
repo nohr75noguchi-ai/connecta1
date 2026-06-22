@@ -61,7 +61,7 @@ window.addEventListener('resize',drawPentaLines);
 
 // ─── GAS endpoint ───────────────────────────────────────────────────────────
 // GASをデプロイしたら下記のURLを差し替えてください
-const GAS_URL='YOUR_GAS_DEPLOY_URL';
+const GAS_URL='https://script.google.com/macros/s/AKfycbzohYTHmvQ2t3wx1CwU8geHGqzEhNQ5VljXEYZzits51X3ewJIiWj02VBwMNxC_zQZs/exec';
 
 // ─── お知らせ ────────────────────────────────────────────────────────────────
 async function loadNews(){

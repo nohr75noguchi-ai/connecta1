@@ -11,8 +11,8 @@
  */
 
 // ▼ ここを書き換えてください ▼
-var CONTACT_EMAIL = 'CONTACT_EMAIL';   // お問い合わせ受信用メールアドレス
-var NOTE_USERNAME  = 'NOTE_USERNAME';  // note.com のユーザー名（例: connecta_official）
+var CONTACT_EMAIL = 'connecta.official@gmail.com';
+var NOTE_USERNAME  = 'connecta2022';
 
 // お問い合わせフォーム受信（POST）
 function doPost(e) {
@@ -38,8 +38,18 @@ function doGet() {
     var items = doc.getRootElement().getChild('channel').getChildren('item');
 
     var data = items.slice(0, 6).map(function(item) {
-      var thumbEl = item.getChild('thumbnail', ns) || item.getChild('enclosure');
-      var thumb   = thumbEl ? (thumbEl.getAttribute('url') ? thumbEl.getAttribute('url').getValue() : '') : '';
+      var thumb = '';
+      var candidates = [
+        item.getChild('thumbnail', ns),
+        item.getChild('content', ns),
+        item.getChild('enclosure')
+      ];
+      for (var i = 0; i < candidates.length; i++) {
+        if (candidates[i]) {
+          var attr = candidates[i].getAttribute('url');
+          if (attr) { thumb = attr.getValue(); break; }
+        }
+      }
       return {
         title: item.getChildText('title'),
         link:  item.getChildText('link'),
