@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -31,9 +31,9 @@
 
 <nav class="nav scrolled" id="mainNav"><div class="nav-inner">
   <a class="nav-logo" href="#" onclick="goPage(0);return false"><span class="c1">connec</span><span class="c2">+a</span></a>
-  <div class="nav-links"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">課題</a><a href="#" onclick="goPage(2);return false" data-page="2">事業内容</a><a href="#" onclick="goPage(3);return false" data-page="3">戦略</a><a href="#" onclick="goPage(4);return false" data-page="4">カルチャー</a><a href="#" onclick="goPage(5);return false" data-page="5">お問い合わせ</a></div>
+  <div class="nav-links"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">組織概要</a><a href="#" onclick="goPage(2);return false" data-page="2">課題</a><a href="#" onclick="goPage(3);return false" data-page="3">事業内容</a><a href="#" onclick="goPage(4);return false" data-page="4">戦略</a><a href="#" onclick="goPage(5);return false" data-page="5">カルチャー</a><a href="#" onclick="goPage(6);return false" data-page="6">お問い合わせ</a></div>
   <button class="nav-hamburger" onclick="toggleMobile()">&#9776;</button>
-</div><div class="nav-mobile" id="navMobile"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">課題</a><a href="#" onclick="goPage(2);return false" data-page="2">事業内容</a><a href="#" onclick="goPage(3);return false" data-page="3">戦略</a><a href="#" onclick="goPage(4);return false" data-page="4">カルチャー</a><a href="#" onclick="goPage(5);return false" data-page="5">お問い合わせ</a></div></nav>
+</div><div class="nav-mobile" id="navMobile"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">組織概要</a><a href="#" onclick="goPage(2);return false" data-page="2">課題</a><a href="#" onclick="goPage(3);return false" data-page="3">事業内容</a><a href="#" onclick="goPage(4);return false" data-page="4">戦略</a><a href="#" onclick="goPage(5);return false" data-page="5">カルチャー</a><a href="#" onclick="goPage(6);return false" data-page="6">お問い合わせ</a></div></nav>
 
 <!-- PAGE 0 -->
 <div class="page active" id="page-0">
@@ -44,6 +44,16 @@
       <p style="color:var(--text-muted);font-size:15px;padding:16px 0">読み込み中...</p>
     </div>
   </div></div>
+  <div class="section" id="noteSection" style="display:none"><div class="section-inner">
+    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">note</h2></div>
+    <div class="grid grid-3" id="noteGrid"></div>
+    <a href="https://note.com/connecta2022" target="_blank" rel="noopener" class="note-more">noteでもっと見る →</a>
+  </div></div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page" id="page-1">
+  <div style="height:64px"></div>
   <div class="section"><div class="section-inner">
     <div class="sec-title-wrap fade-in"><h2 class="sec-heading">数字で見るconnec+a</h2></div>
     <div class="stat-grid">
@@ -74,15 +84,10 @@
       </div>
     </div>
   </div></div>
-  <div class="section" id="noteSection" style="display:none"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">note</h2></div>
-    <div class="grid grid-3" id="noteGrid"></div>
-    <a href="https://note.com/connecta2022" target="_blank" rel="noopener" class="note-more">noteでもっと見る →</a>
-  </div></div>
 </div>
 
-<!-- PAGE 1 -->
-<div class="page" id="page-1">
+<!-- PAGE 2 -->
+<div class="page" id="page-2">
   <div style="height:64px"></div>
   <div class="section"><div class="section-inner">
     <div class="sec-title-wrap fade-in"><h2 class="sec-heading">原体験：海外で感じた「外国人としての孤立」</h2></div>
@@ -121,8 +126,8 @@
 </div>
 <div class="modal-overlay" id="issueModal" onclick="closeIssue(event)"><div class="modal-content" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeIssue()">&#10005;</button><div class="modal-header" id="issueModalHeader"></div><div class="modal-body" id="issueModalBody"></div></div></div>
 
-<!-- PAGE 2 -->
-<div class="page" id="page-2">
+<!-- PAGE 3 -->
+<div class="page" id="page-3">
   <div style="height:64px"></div>
   <div class="section"><div class="section-inner">
     <div class="sec-title-wrap fade-in"><h2 class="sec-heading">5つの事業で群戦略を展開</h2></div>
@@ -175,8 +180,8 @@
   </div></div>
 </div>
 
-<!-- PAGE 3 -->
-<div class="page" id="page-3">
+<!-- PAGE 4 -->
+<div class="page" id="page-4">
   <div style="height:64px"></div>
   <div class="section"><div class="section-inner">
     <div class="sec-title-wrap fade-in"><h2 class="sec-heading">2026上半期</h2></div>
@@ -195,8 +200,8 @@
   </div></div>
 </div>
 
-<!-- PAGE 4 -->
-<div class="page" id="page-4">
+<!-- PAGE 5 -->
+<div class="page" id="page-5">
   <div style="height:64px"></div>
   <div class="section"><div class="section-inner">
     <div class="sec-title-wrap fade-in"><h2 class="sec-heading">バリュー</h2></div>
@@ -221,8 +226,8 @@
   </div></div>
 </div>
 
-<!-- PAGE 5 -->
-<div class="page" id="page-5">
+<!-- PAGE 6 -->
+<div class="page" id="page-6">
   <div style="height:64px"></div>
   <div class="section"><div class="section-inner">
     <div class="sec-title-wrap fade-in"><h2 class="sec-heading">お問い合わせ</h2></div>
@@ -254,7 +259,7 @@
   </div></div>
 </div>
 
-<footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo"><span class="c1">connec</span><span class="c2">+a</span></div><p class="footer-desc">学生団体connec+a<br>Leading the evolutionary continuity of culture</p></div><div class="footer-links"><a href="#" onclick="goPage(0);return false">TOP</a><a href="#" onclick="goPage(1);return false">課題</a><a href="#" onclick="goPage(2);return false">事業内容</a><a href="#" onclick="goPage(3);return false">戦略</a><a href="#" onclick="goPage(4);return false">カルチャー</a><a href="#" onclick="goPage(5);return false">お問い合わせ</a></div></div><div class="footer-bottom"><p>&copy;2026 connec+a All rights reserved.</p></div></div></footer>
+<footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo"><span class="c1">connec</span><span class="c2">+a</span></div><p class="footer-desc">学生団体connec+a<br>Leading the evolutionary continuity of culture</p></div><div class="footer-links"><a href="#" onclick="goPage(0);return false">TOP</a><a href="#" onclick="goPage(1);return false">組織概要</a><a href="#" onclick="goPage(2);return false">課題</a><a href="#" onclick="goPage(3);return false">事業内容</a><a href="#" onclick="goPage(4);return false">戦略</a><a href="#" onclick="goPage(5);return false">カルチャー</a><a href="#" onclick="goPage(6);return false">お問い合わせ</a></div></div><div class="footer-bottom"><p>&copy;2026 connec+a All rights reserved.</p></div></div></footer>
 
 <script src="main.js" defer></script>
 </body>
