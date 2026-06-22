@@ -29,32 +29,19 @@ function doPost(e) {
   }
 }
 
-// note.com RSSプロキシ（GET）
+// note.com APIプロキシ（GET）
 function doGet() {
   try {
-    var res  = UrlFetchApp.fetch('https://note.com/' + NOTE_USERNAME + '/rss');
-    var doc  = XmlService.parse(res.getContentText());
-    var ns   = XmlService.getNamespace('media', 'http://search.yahoo.com/mrss/');
-    var items = doc.getRootElement().getChild('channel').getChildren('item');
+    var res  = UrlFetchApp.fetch('https://note.com/api/v2/creators/' + NOTE_USERNAME + '/contents?kind=note&page=1');
+    var json = JSON.parse(res.getContentText());
+    var items = json.data.contents;
 
     var data = items.slice(0, 6).map(function(item) {
-      var thumb = '';
-      var candidates = [
-        item.getChild('thumbnail', ns),
-        item.getChild('content', ns),
-        item.getChild('enclosure')
-      ];
-      for (var i = 0; i < candidates.length; i++) {
-        if (candidates[i]) {
-          var attr = candidates[i].getAttribute('url');
-          if (attr) { thumb = attr.getValue(); break; }
-        }
-      }
       return {
-        title: item.getChildText('title'),
-        link:  item.getChildText('link'),
-        date:  item.getChildText('pubDate'),
-        thumb: thumb
+        title: item.name,
+        link:  'https://note.com/' + NOTE_USERNAME + '/n/' + item.key,
+        date:  item.publishAt,
+        thumb: item.eyecatch || ''
       };
     });
 

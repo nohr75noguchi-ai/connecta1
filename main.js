@@ -91,7 +91,7 @@ async function loadNoteArticles(){
     if(!articles.length)return;
     sec.style.display='';
     grid.innerHTML=articles.map(a=>`
-      <div class="note-card fade-in">
+      <div class="note-card fade-in visible">
         <a href="${a.link}" target="_blank" rel="noopener">
           <div class="note-thumb"${a.thumb?` style="background-image:url('${a.thumb}')"`:''}></div>
           <div class="note-body">
