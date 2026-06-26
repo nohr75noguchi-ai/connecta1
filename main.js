@@ -63,12 +63,16 @@ window.addEventListener('resize',drawPentaLines);
 // GASをデプロイしたら下記のURLを差し替えてください
 const GAS_URL='https://script.google.com/macros/s/AKfycbzohYTHmvQ2t3wx1CwU8geHGqzEhNQ5VljXEYZzits51X3ewJIiWj02VBwMNxC_zQZs/exec';
 
-// ─── お知らせ ────────────────────────────────────────────────────────────────
+// ─── お知らせ（GAS スプレッドシート連携）────────────────────────────────────
 async function loadNews(){
   const list=document.getElementById('newsList');
   if(!list)return;
+  if(!GAS_URL||GAS_URL==='YOUR_GAS_DEPLOY_URL'){
+    list.innerHTML='<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせはありません</p>';
+    return;
+  }
   try{
-    const items=await fetch('data/news.json').then(r=>r.json());
+    const items=await fetch(GAS_URL+'?type=news').then(r=>r.json());
     if(!items.length){list.innerHTML='<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせはありません</p>';return;}
     list.innerHTML=items.map(n=>`
       <div class="news-item">
