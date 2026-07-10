@@ -23,9 +23,9 @@
  */
 
 // ▼ ここを書き換えてください ▼
-var CONTACT_EMAIL  = 'connecta.official@gmail.com';
-var NOTE_USERNAME  = 'connecta2022';
-var SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID'; // スプレッドシートのIDを貼り付け
+var CONTACT_EMAIL = 'connecta.official@gmail.com';
+var NOTE_USERNAME = 'connecta2022';
+var SPREADSHEET_ID = '1vhRIIR-rtBvkMi2KUOU1UkB71OdSaBdJTzbldGEa7S0'; // スプレッドシートのIDを貼り付け
 
 // ─── ルーティング ───────────────────────────────────────────────────────────
 function doGet(e) {
@@ -39,32 +39,37 @@ function doGet(e) {
 // ─── お知らせ（スプレッドシートから取得）────────────────────────────────────
 function getNews() {
   try {
-    var ss    = SpreadsheetApp.openById(SPREADSHEET_ID);
+    var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
     var sheet = ss.getSheetByName('お知らせ');
     if (!sheet) return respond([]);
 
     var rows = sheet.getDataRange().getValues();
     // 1行目はヘッダーなのでスキップ
     var data = rows.slice(1)
-      .filter(function(r) { return r[0] && r[2]; }) // 日付・タイトルが空の行は除外
-      .map(function(r) {
-        var date = r[0];
-        // セルが Date 型の場合は整形、文字列の場合はそのまま使用
-        if (date instanceof Date) {
-          date = Utilities.formatDate(date, 'Asia/Tokyo', 'yyyy/MM/dd');
+      .filter(function (r) { return r[0] && r[2]; }) // 日付・タイトルが空の行は除外
+      .map(function (r) {
+        var raw = r[0];
+        var dateText, sortKey;
+        // セルが Date 型の場合は「2026年7月11日」形式に整形、文字列の場合はそのまま使用
+        if (raw instanceof Date) {
+          dateText = Utilities.formatDate(raw, 'Asia/Tokyo', 'yyyy年M月d日');
+          sortKey  = Utilities.formatDate(raw, 'Asia/Tokyo', 'yyyyMMdd'); // 並び替え用（ゼロ埋め）
         } else {
-          date = String(date).trim();
+          dateText = String(raw).trim();
+          sortKey  = dateText;
         }
         return {
-          date:     date,
+          date: dateText,
+          sortKey: sortKey,
           category: String(r[1] || 'お知らせ').trim(),
-          title:    String(r[2]).trim(),
-          link:     String(r[3] || '').trim()
+          title: String(r[2]).trim(),
+          link: String(r[3] || '').trim()
         };
       });
 
     // 日付の降順（新しい順）に並び替え
-    data.sort(function(a, b) { return b.date.localeCompare(a.date); });
+    data.sort(function (a, b) { return b.sortKey.localeCompare(a.sortKey); });
+    data.forEach(function (d) { delete d.sortKey; });
 
     return respond(data);
   } catch (err) {
@@ -75,15 +80,15 @@ function getNews() {
 // ─── note.com 記事（既存）────────────────────────────────────────────────────
 function getNoteArticles() {
   try {
-    var res   = UrlFetchApp.fetch('https://note.com/api/v2/creators/' + NOTE_USERNAME + '/contents?kind=note&page=1');
-    var json  = JSON.parse(res.getContentText());
+    var res = UrlFetchApp.fetch('https://note.com/api/v2/creators/' + NOTE_USERNAME + '/contents?kind=note&page=1');
+    var json = JSON.parse(res.getContentText());
     var items = json.data.contents;
 
-    var data = items.slice(0, 6).map(function(item) {
+    var data = items.slice(0, 6).map(function (item) {
       return {
         title: item.name,
-        link:  'https://note.com/' + NOTE_USERNAME + '/n/' + item.key,
-        date:  item.publishAt,
+        link: 'https://note.com/' + NOTE_USERNAME + '/n/' + item.key,
+        date: item.publishAt,
         thumb: item.eyecatch || ''
       };
     });
