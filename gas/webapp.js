@@ -49,12 +49,20 @@ function getNews() {
       .filter(function (r) { return r[0] && r[2]; }) // 日付・タイトルが空の行は除外
       .map(function (r) {
         var raw = r[0];
-        var dateText, sortKey;
-        // セルが Date 型の場合は「2026年7月11日」形式に整形、文字列の場合はそのまま使用
+        var dateObj = null;
         if (raw instanceof Date) {
-          dateText = Utilities.formatDate(raw, 'Asia/Tokyo', 'yyyy年M月d日');
-          sortKey  = Utilities.formatDate(raw, 'Asia/Tokyo', 'yyyyMMdd'); // 並び替え用（ゼロ埋め）
+          dateObj = raw;
         } else {
+          // 文字列でも日付として解釈できる場合（例: "2026/7/11"）は Date に変換する
+          var parsed = new Date(raw);
+          if (!isNaN(parsed.getTime())) dateObj = parsed;
+        }
+        var dateText, sortKey;
+        if (dateObj) {
+          dateText = Utilities.formatDate(dateObj, 'Asia/Tokyo', 'yyyy年M月d日');
+          sortKey  = Utilities.formatDate(dateObj, 'Asia/Tokyo', 'yyyyMMdd'); // 並び替え用（ゼロ埋め）
+        } else {
+          // 解釈できない文字列（既に「2026年7月11日」のように整形済みなど）はそのまま使用
           dateText = String(raw).trim();
           sortKey  = dateText;
         }
