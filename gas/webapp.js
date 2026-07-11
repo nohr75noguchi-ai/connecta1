@@ -11,21 +11,35 @@
  * 【デプロイ手順】
  * 1. https://script.google.com で新規プロジェクト作成
  * 2. このファイルの内容を貼り付ける
- * 3. CONTACT_EMAIL / NOTE_USERNAME / SPREADSHEET_ID を書き換える
- * 4. 「デプロイ」→「新しいデプロイ」→ 種類：ウェブアプリ
+ * 3. CONTACT_EMAIL / NOTE_USERNAME を書き換える
+ * 4. スプレッドシートIDをスクリプトプロパティに登録する（下記参照）
+ * 5. 「デプロイ」→「新しいデプロイ」→ 種類：ウェブアプリ
  *    実行ユーザー：自分、アクセス：全員 に設定して「デプロイ」
- * 5. 発行されたURLを main.js の GAS_URL に貼り付けてコミット
+ * 6. 発行されたURLを main.js の GAS_URL に貼り付けてコミット
  *
- * 【スプレッドシートIDの確認方法】
- * スプレッドシートのURLが
- *   https://docs.google.com/spreadsheets/d/【ここがID】/edit
- * の形式なので、その部分をコピーして SPREADSHEET_ID に貼り付ける。
+ * 【スプレッドシートIDの登録方法】
+ * このリポジトリは public のため、IDをコードに直接書かずスクリプトプロパティで管理する。
+ * 1. スプレッドシートのURL
+ *      https://docs.google.com/spreadsheets/d/【ここがID】/edit
+ *    からIDをコピーする。
+ * 2. GASエディタ左下の「⚙ プロジェクトの設定」を開く。
+ * 3. 「スクリプト プロパティ」→「スクリプト プロパティを追加」で
+ *      プロパティ: SPREADSHEET_ID
+ *      値        : コピーしたID
+ *    を登録して保存する。
+ *
+ * ※IDは秘密鍵ではないため、これだけでは防御として不十分。
+ *   スプレッドシート側の共有設定が「リンクを知っている全員が閲覧可」に
+ *   なっていないことを Google Drive 上で必ず確認すること。
  */
 
 // ▼ ここを書き換えてください ▼
 var CONTACT_EMAIL = 'connecta.official@gmail.com';
 var NOTE_USERNAME = 'connecta2022';
-var SPREADSHEET_ID = '1vhRIIR-rtBvkMi2KUOU1UkB71OdSaBdJTzbldGEa7S0'; // スプレッドシートのIDを貼り付け
+
+// ─── お問い合わせの制限値 ───────────────────────────────────────────────────
+var MAX_LENGTHS = { name: 100, email: 254, subject: 200, message: 5000 };
+var HOURLY_SEND_LIMIT = 10; // 1時間あたりの送信上限（Gmailの送信数上限を守るため）
 
 // ─── ルーティング ───────────────────────────────────────────────────────────
 function doGet(e) {
@@ -39,7 +53,10 @@ function doGet(e) {
 // ─── お知らせ（スプレッドシートから取得）────────────────────────────────────
 function getNews() {
   try {
-    var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    var id = PropertiesService.getScriptProperties().getProperty('SPREADSHEET_ID');
+    if (!id) return respond([]); // 未設定時は安全に空で返す
+
+    var ss = SpreadsheetApp.openById(id);
     var sheet = ss.getSheetByName('お知らせ');
     if (!sheet) return respond([]);
 
@@ -110,16 +127,58 @@ function getNoteArticles() {
 // ─── お問い合わせフォーム受信（POST）────────────────────────────────────────
 function doPost(e) {
   try {
+    if (!e || !e.postData || !e.postData.contents) {
+      return respond({ status: 'error', message: 'リクエストが不正です' });
+    }
     var p = JSON.parse(e.postData.contents);
+
+    // ハニーポット: botだけが埋める項目。埋まっていたら送信せず成功を装う
+    if (str(p.website)) return respond({ status: 'ok' });
+
+    var name = str(p.name);
+    var email = str(p.email);
+    var subject = str(p.subject);
+    var message = str(p.message);
+
+    if (!name || !email || !subject || !message) {
+      return respond({ status: 'error', message: '必須項目が入力されていません' });
+    }
+    if (name.length > MAX_LENGTHS.name || email.length > MAX_LENGTHS.email ||
+        subject.length > MAX_LENGTHS.subject || message.length > MAX_LENGTHS.message) {
+      return respond({ status: 'error', message: '入力が長すぎます' });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return respond({ status: 'error', message: 'メールアドレスの形式が正しくありません' });
+    }
+    if (!withinSendLimit()) {
+      return respond({ status: 'error', message: '混み合っています。時間をおいて再度お試しください' });
+    }
+
     GmailApp.sendEmail(
       CONTACT_EMAIL,
-      '【connec+a お問い合わせ】' + p.subject,
-      'お名前: ' + p.name + '\nメール: ' + p.email + '\n\n' + p.message
+      // 件名の改行はヘッダインジェクションの経路になるため除去する
+      '【connec+a お問い合わせ】' + subject.replace(/[\r\n]+/g, ' '),
+      'お名前: ' + name + '\nメール: ' + email + '\n\n' + message
     );
     return respond({ status: 'ok' });
   } catch (err) {
     return respond({ status: 'error', message: String(err) });
   }
+}
+
+function str(v) {
+  return String(v == null ? '' : v).trim();
+}
+
+// 1時間あたりの送信数を制限する。
+// GASのdoPostはクライアントIPを取得できないため、IP単位ではなく全体の流量で制限する。
+function withinSendLimit() {
+  var cache = CacheService.getScriptCache();
+  var key = 'contact_' + Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyyMMddHH');
+  var count = Number(cache.get(key) || 0);
+  if (count >= HOURLY_SEND_LIMIT) return false;
+  cache.put(key, String(count + 1), 3600);
+  return true;
 }
 
 // ─── レスポンスヘルパー ───────────────────────────────────────────────────────

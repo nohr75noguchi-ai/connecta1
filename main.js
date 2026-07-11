@@ -1,6 +1,18 @@
 ﻿let currentPage = 0;
-function goPage(n) { document.querySelectorAll('.page').forEach((p, i) => p.classList.toggle('active', i === n)); currentPage = n; window.scrollTo(0, 0); document.querySelectorAll('.nav-links a,.nav-mobile a').forEach(a => a.classList.toggle('active', parseInt(a.dataset.page) === n)); document.getElementById('navMobile').classList.remove('open'); updateNav(); setTimeout(() => { initFadeIn(); drawPentaLines() }, 50) }
-function toggleMobile() { document.getElementById('navMobile').classList.toggle('open') }
+function goPage(n) { document.querySelectorAll('.page').forEach((p, i) => p.classList.toggle('active', i === n)); currentPage = n; window.scrollTo(0, 0); document.querySelectorAll('.nav-links a,.nav-mobile a').forEach(a => a.classList.toggle('active', parseInt(a.dataset.page) === n)); document.getElementById('navMobile').classList.remove('open'); syncHamburger(); updateNav(); setTimeout(() => { initFadeIn(); drawPentaLines() }, 50) }
+function toggleMobile() { document.getElementById('navMobile').classList.toggle('open'); syncHamburger() }
+function syncHamburger() {
+  const btn = document.querySelector('.nav-hamburger');
+  if (btn) btn.setAttribute('aria-expanded', document.getElementById('navMobile').classList.contains('open') ? 'true' : 'false');
+}
+// role="button" の要素をEnter/Spaceでも発火させる
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const el = e.target.closest('[role="button"]');
+  if (!el) return;
+  e.preventDefault();
+  el.click();
+});
 window.addEventListener('scroll', updateNav);
 function updateNav() { document.getElementById('mainNav').classList.toggle('scrolled', currentPage !== 0 || window.scrollY > 40) }
 function initFadeIn() { const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .12 }); document.querySelectorAll('.page.active .fade-in:not(.visible)').forEach(el => obs.observe(el)) }
@@ -71,6 +83,23 @@ window.addEventListener('resize', drawPentaLines);
 // GASをデプロイしたら下記のURLを差し替えてください
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxc1uqNVbItwU2JUjOw_SbaxgbfUS1W8e_LhcSimprUb9G4Tc0xQvhq-qkQBXchRtldCQ/exec';
 
+// ─── 外部データの埋め込みヘルパー ────────────────────────────────────────────
+const ESC_MAP = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+function escapeHtml(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g, c => ESC_MAP[c]);
+}
+// http/https 以外（javascript: 等）は空文字を返す
+function safeUrl(v) {
+  const s = String(v == null ? '' : v).trim();
+  return /^https?:\/\//i.test(s) ? s : '';
+}
+// style.css が定義しているカテゴリのみ許可し、未知の値はフォールバック
+const NEWS_CATEGORIES = ['イベント', 'メディア', '採用', 'お知らせ'];
+function newsCategory(v) {
+  const s = String(v == null ? '' : v).trim();
+  return NEWS_CATEGORIES.includes(s) ? s : 'お知らせ';
+}
+
 // ─── お知らせ（GAS スプレッドシート連携）────────────────────────────────────
 async function loadNews() {
   const list = document.getElementById('newsList');
@@ -82,13 +111,20 @@ async function loadNews() {
   try {
     const items = await fetch(GAS_URL + '?type=news').then(r => r.json());
     if (!items.length) { list.innerHTML = '<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせはありません</p>'; return; }
-    list.innerHTML = items.map(n => `
+    list.innerHTML = items.map(n => {
+      const title = escapeHtml(n.title);
+      const link = safeUrl(n.link);
+      return `
       <div class="news-item">
-        <span class="news-date">${n.date}</span>
-        <span class="news-cat cat-${n.category}">${n.category}</span>
-        ${n.link ? `<a href="${n.link}" target="_blank" rel="noopener">${n.title}</a>` : `<span>${n.title}</span>`}
-      </div>`).join('');
-  } catch (e) { list.innerHTML = '<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせを読み込めませんでした</p>'; }
+        <span class="news-date">${escapeHtml(n.date)}</span>
+        <span class="news-cat cat-${newsCategory(n.category)}">${escapeHtml(n.category)}</span>
+        ${link ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener">${title}</a>` : `<span>${title}</span>`}
+      </div>`;
+    }).join('');
+  } catch (e) {
+    console.error('お知らせの取得に失敗しました', e);
+    list.innerHTML = '<p style="color:var(--text-muted);font-size:15px;padding:16px 0">お知らせを読み込めませんでした</p>';
+  }
 }
 document.addEventListener('DOMContentLoaded', loadNews);
 
@@ -101,17 +137,29 @@ async function loadNoteArticles() {
   try {
     const articles = await fetch(GAS_URL).then(r => r.json());
     if (!articles.length) { sec.style.display = 'none'; return; }
-    grid.innerHTML = articles.map(a => `
+    const cards = articles.map(a => {
+      const link = safeUrl(a.link);
+      if (!link) return '';
+      const thumb = safeUrl(a.thumb);
+      const d = new Date(a.date);
+      const date = isNaN(d.getTime()) ? '' : d.toLocaleDateString('ja-JP');
+      return `
       <div class="note-card fade-in visible">
-        <a href="${a.link}" target="_blank" rel="noopener">
-          <div class="note-thumb"${a.thumb ? ` style="background-image:url('${a.thumb}')"` : ''}></div>
+        <a href="${escapeHtml(link)}" target="_blank" rel="noopener">
+          <div class="note-thumb"${thumb ? ` style="background-image:url('${escapeHtml(thumb)}')"` : ''}></div>
           <div class="note-body">
-            <p class="note-title">${a.title}</p>
-            <span class="note-date">${new Date(a.date).toLocaleDateString('ja-JP')}</span>
+            <p class="note-title">${escapeHtml(a.title)}</p>
+            <span class="note-date">${date}</span>
           </div>
         </a>
-      </div>`).join('');
-  } catch (e) { sec.style.display = 'none'; }
+      </div>`;
+    }).join('');
+    if (!cards) { sec.style.display = 'none'; return; }
+    grid.innerHTML = cards;
+  } catch (e) {
+    console.error('note記事の取得に失敗しました', e);
+    sec.style.display = 'none';
+  }
 }
 document.addEventListener('DOMContentLoaded', loadNoteArticles);
 
@@ -129,7 +177,8 @@ async function submitContact(e) {
     name: form.name.value.trim(),
     email: form.email.value.trim(),
     subject: form.subject.value.trim(),
-    message: form.message.value.trim()
+    message: form.message.value.trim(),
+    website: form.website.value.trim() // ハニーポット（人間は入力しない）
   };
   try {
     const res = await fetch(GAS_URL, { method: 'POST', body: JSON.stringify(body) });
@@ -139,6 +188,7 @@ async function submitContact(e) {
       showContactMsg('お問い合わせを受け付けました。ありがとうございます。', 'success');
     } else { throw new Error(); }
   } catch (err) {
+    console.error('お問い合わせの送信に失敗しました', err);
     showContactMsg('送信に失敗しました。しばらく経ってから再度お試しください。', 'error');
   } finally {
     btn.disabled = false; btn.textContent = '送信する';
