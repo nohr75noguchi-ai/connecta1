@@ -94,14 +94,13 @@ document.addEventListener('DOMContentLoaded', loadNews);
 
 // ─── note記事 ────────────────────────────────────────────────────────────────
 async function loadNoteArticles() {
-  if (!GAS_URL || GAS_URL === 'YOUR_GAS_DEPLOY_URL') return;
   const sec = document.getElementById('noteSection');
   const grid = document.getElementById('noteGrid');
   if (!sec || !grid) return;
+  if (!GAS_URL || GAS_URL === 'YOUR_GAS_DEPLOY_URL') { sec.style.display = 'none'; return; }
   try {
     const articles = await fetch(GAS_URL).then(r => r.json());
-    if (!articles.length) return;
-    sec.style.display = '';
+    if (!articles.length) { sec.style.display = 'none'; return; }
     grid.innerHTML = articles.map(a => `
       <div class="note-card fade-in visible">
         <a href="${a.link}" target="_blank" rel="noopener">
@@ -112,7 +111,7 @@ async function loadNoteArticles() {
           </div>
         </a>
       </div>`).join('');
-  } catch (e) { }
+  } catch (e) { sec.style.display = 'none'; }
 }
 document.addEventListener('DOMContentLoaded', loadNoteArticles);
 
