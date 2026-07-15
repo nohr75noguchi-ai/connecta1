@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>connec+a | コネクタ</title>
 <meta name="description" content="学生団体connec+aは、交流・情報・環境の3軸で“群戦略”を展開し、次世代の在留外国人支援エコシステムを構築します。日本人と在留外国人が継続的につながる場と、生活情報プラットフォームを提供。">
-<meta name="theme-color" content="#0f1a3c">
+<meta name="theme-color" content="#0f1c19">
 <link rel="canonical" href="https://nohr75noguchi-ai.github.io/connecta1/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="connec+a">
@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,7 +42,7 @@
 </svg>
 
 <nav class="nav scrolled" id="mainNav"><div class="nav-inner">
-  <a class="nav-logo" href="#" onclick="goPage(0);return false"><span class="c1">connec</span><span class="c2">+a</span></a>
+  <a class="nav-logo" href="#" onclick="goPage(0);return false">connec<span class="c2">+a</span></a>
   <div class="nav-links"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">組織概要</a><a href="#" onclick="goPage(2);return false" data-page="2">課題</a><a href="#" onclick="goPage(3);return false" data-page="3">事業内容</a><a href="#" onclick="goPage(4);return false" data-page="4">戦略</a><a href="#" onclick="goPage(5);return false" data-page="5">カルチャー</a><a href="#" onclick="goPage(6);return false" data-page="6">お問い合わせ</a></div>
   <button class="nav-hamburger" onclick="toggleMobile()" aria-label="メニューを開く" aria-expanded="false" aria-controls="navMobile">&#9776;</button>
 </div><div class="nav-mobile" id="navMobile"><a href="#" onclick="goPage(0);return false" data-page="0" class="active">TOP</a><a href="#" onclick="goPage(1);return false" data-page="1">組織概要</a><a href="#" onclick="goPage(2);return false" data-page="2">課題</a><a href="#" onclick="goPage(3);return false" data-page="3">事業内容</a><a href="#" onclick="goPage(4);return false" data-page="4">戦略</a><a href="#" onclick="goPage(5);return false" data-page="5">カルチャー</a><a href="#" onclick="goPage(6);return false" data-page="6">お問い合わせ</a></div></nav>
@@ -50,27 +50,39 @@
 <main>
 <!-- PAGE 0 -->
 <div class="page active" id="page-0">
-  <div class="hero"><h1 class="fade-in hero-logo"><span class="h1">connec</span><span class="h2">+a</span></h1><p class="fade-in fade-d1 hero-sub">Leading the evolutionary continuity of culture</p><p class="fade-in fade-d2 hero-main">交流・情報・環境の３軸で<span>"群戦略"</span>を展開し、<br>次世代在留外国人支援エコシステムを構築する学生団体</p><div class="fade-in fade-d3 hero-tags"><span class="hero-tag">学生団体connec+a</span><span class="hero-tag">設立 2025年11月</span><span class="hero-tag">東京・大阪・オンライン</span></div></div>
+  <div class="hero">
+    <!-- 団体名の「+」が connec と a を結ぶ。この結節がサイト全体の設計言語になる -->
+    <h1 class="hero-mark" aria-label="connec+a"><span class="hm-a" aria-hidden="true">connec</span><span class="hm-plus" aria-hidden="true">+</span><span class="hm-b" aria-hidden="true">a</span></h1>
+    <p class="hero-sub hero-rise">Leading the evolutionary continuity of culture</p>
+    <p class="hero-main hero-rise">交流・情報・環境の3軸で<span>“群戦略”</span>を展開し、<br>次世代在留外国人支援エコシステムを構築する学生団体</p>
+    <div class="hero-meta hero-rise">
+      <div class="m"><b>設立</b>2025.11</div>
+      <div class="m"><b>拠点</b>東京・大阪・オンライン</div>
+      <div class="m"><b>メンバー</b>49名</div>
+    </div>
+  </div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">お知らせ</h2></div>
-    <div class="card fade-in" id="newsList" style="padding:8px 28px">
-      <p style="color:var(--text-muted);font-size:15px;padding:16px 0">読み込み中...</p>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>News</span></div><h2 class="sec-heading">お知らせ</h2></div>
+    <div class="news-list fade-in" id="newsList">
+      <p class="news-empty">読み込み中...</p>
     </div>
   </div></div>
+
   <div class="section" id="noteSection"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">note</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Journal</span></div><h2 class="sec-heading">note</h2></div>
     <div class="grid grid-3" id="noteGrid">
-      <p style="color:var(--text-muted);font-size:15px;padding:16px 0">読み込み中...</p>
+      <p class="news-empty">読み込み中...</p>
     </div>
-    <a href="https://note.com/connecta2022" target="_blank" rel="noopener" class="note-more">noteでもっと見る →</a>
+    <a href="https://note.com/connecta2022" target="_blank" rel="noopener" class="note-more">noteでもっと見る</a>
   </div></div>
 </div>
 
 <!-- PAGE 1 -->
 <div class="page" id="page-1">
-  <div style="height:64px"></div>
+  <div class="page-top"></div>
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">数字で見るconnec+a</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>By the numbers</span></div><h2 class="sec-heading">数字で見るconnec+a</h2></div>
     <div class="stat-grid">
       <div class="stat-card fade-in"><div class="num">49</div><div class="sub">2026年4月時点</div><div class="lbl">メンバー数</div></div>
       <div class="stat-card fade-in fade-d1"><div class="num">414</div><div class="lbl">イベント総参加者数</div></div>
@@ -80,173 +92,308 @@
       <div class="stat-card fade-in fade-d5"><div class="num">&#165;51万</div><div class="sub">for Good!</div><div class="lbl">CF調達額</div></div>
     </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">組織概要</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Organization</span></div><h2 class="sec-heading">組織概要</h2></div>
     <div class="grid grid-2">
-      <div class="card fade-in"><h3 style="font-size:17px;font-weight:700;color:var(--text-primary);margin-bottom:14px">基本情報</h3><div class="info-row"><span class="k">代表</span><span class="v">菊地 隆輝</span></div><div class="info-row"><span class="k">副代表</span><span class="v">宮崎 こはる</span></div><div class="info-row"><span class="k">事業</span><span class="v">在留外国人支援事業</span></div><div class="info-row"><span class="k">関連団体</span><span class="v">NPO法人Curiosity</span></div><div class="info-row"><span class="k">内訳</span><span class="v">高校生26 | 大学生20 | 社会人3</span></div></div>
-      <div class="card fade-in fade-d1"><h3 style="font-size:22px;font-weight:700;color:var(--text-primary);margin-bottom:16px">Co-Creation LAB 始動</h3><p style="font-size:18px;color:var(--text-sub);line-height:1.8">2025年12月より、神谷町トラストタワー2階「COCO JAPAN」にて個人向け交流イベントを定期開催。伝統工芸品に囲まれた空間での体験型交流を通じ、新たな交流機会を創出。</p></div>
-    </div>
-  </div></div>
-  <div class="section"><div class="section-inner">
-    <div class="vm-grid"><div class="vm-card vision fade-in"><div class="vm-label">VISION</div><div class="vm-title">文化の進化的継承を牽引する</div><div class="vm-en">Leading the evolutionary continuity of culture</div></div><div class="vm-card mission fade-in fade-d1"><div class="vm-label">MISSION</div><div class="vm-title">交流・情報・環境の包括的支援で<br>在留外国人の定着と活躍を促す</div></div></div>
-  </div></div>
-  <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">代表挨拶</h2></div>
-    <div class="fade-in" style="max-width:760px;margin:0 auto">
-      <div class="card" style="padding:0;overflow:hidden">
-        <!-- ▼ 画像パスをここに差し替え ▼ -->
-        <img src="images/leader.jpg" alt="代表挨拶" width="2829" height="1466" loading="lazy" style="width:100%;height:auto;display:block" onerror="this.parentElement.innerHTML='<div style=\'padding:48px 32px;text-align:center;color:var(--text-muted);font-size:15px\'>代表挨拶の画像をここに配置<br><span style=\'font-size:13px;color:var(--text-muted)\'>img の src に画像パスを指定してください</span></div>'">
+      <div class="card fade-in">
+        <h3 class="card-title">基本情報</h3>
+        <div class="info-row"><span class="k">代表</span><span class="v">菊地 隆輝</span></div>
+        <div class="info-row"><span class="k">副代表</span><span class="v">宮崎 こはる</span></div>
+        <div class="info-row"><span class="k">事業</span><span class="v">在留外国人支援事業</span></div>
+        <div class="info-row"><span class="k">関連団体</span><span class="v">NPO法人Curiosity</span></div>
+        <div class="info-row"><span class="k">内訳</span><span class="v">高校生26 / 大学生20 / 社会人3</span></div>
+      </div>
+      <div class="card fade-in fade-d1">
+        <h3 class="card-title">Co-Creation LAB 始動</h3>
+        <p style="font-size:15px;color:var(--ink-2);line-height:2.1">2025年12月より、神谷町トラストタワー2階「COCO JAPAN」にて個人向け交流イベントを定期開催。伝統工芸品に囲まれた空間での体験型交流を通じ、新たな交流機会を創出。</p>
       </div>
     </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">メンバー統計</h2></div>
-    <div class="grid grid-3"><div class="mem-card fade-in"><div class="num">23名</div><div class="lbl">大学生・社会人</div></div><div class="mem-card fade-in fade-d1"><div class="num">26名</div><div class="lbl">中高生</div></div><div class="mem-card fade-in fade-d1"><div class="num">39名</div><div class="lbl">事業部</div></div><div class="mem-card fade-in fade-d2"><div class="num">12名</div><div class="lbl">Executive Office</div></div><div class="mem-card fade-in fade-d2"><div class="num">12名</div><div class="lbl">広報部</div></div><div class="mem-card fade-in fade-d3"><div class="num">12名</div><div class="lbl">コーポレート部</div></div></div>
+    <div class="vm-grid">
+      <div class="vm-card vision fade-in">
+        <div class="vm-label">VISION</div>
+        <div class="vm-title">文化の進化的継承を牽引する</div>
+        <div class="vm-en">Leading the evolutionary continuity of culture</div>
+      </div>
+      <div class="vm-card mission fade-in fade-d1">
+        <div class="vm-label">MISSION</div>
+        <div class="vm-title">交流・情報・環境の包括的支援で<br>在留外国人の定着と活躍を促す</div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="section"><div class="section-inner">
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Message</span></div><h2 class="sec-heading">代表挨拶</h2></div>
+    <div class="leader-frame fade-in">
+      <!-- ▼ 画像パスをここに差し替え ▼ -->
+      <img src="images/leader.jpg" alt="代表挨拶" width="2829" height="1466" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'leader-fallback\'>代表挨拶の画像をここに配置<br>img の src に画像パスを指定してください</div>'">
+    </div>
+  </div></div>
+
+  <div class="section"><div class="section-inner">
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Members</span></div><h2 class="sec-heading">メンバー統計</h2></div>
+    <div class="grid grid-3">
+      <div class="mem-card fade-in"><div class="num">23名</div><div class="lbl">大学生・社会人</div></div>
+      <div class="mem-card fade-in fade-d1"><div class="num">26名</div><div class="lbl">中高生</div></div>
+      <div class="mem-card fade-in fade-d1"><div class="num">39名</div><div class="lbl">事業部</div></div>
+      <div class="mem-card fade-in fade-d2"><div class="num">12名</div><div class="lbl">Executive Office</div></div>
+      <div class="mem-card fade-in fade-d2"><div class="num">12名</div><div class="lbl">広報部</div></div>
+      <div class="mem-card fade-in fade-d3"><div class="num">12名</div><div class="lbl">コーポレート部</div></div>
+    </div>
   </div></div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="page-2">
-  <div style="height:64px"></div>
+  <div class="page-top"></div>
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">原体験：海外で感じた「外国人としての孤立」</h2></div>
-    <div class="grid grid-3 fade-in"><div class="origin-card"><div class="origin-num">01</div><h4>団体発足の背景</h4><p>留学を通して外国人としての孤立感を経験</p></div><div class="origin-card"><div class="origin-num">02</div><h4>日本社会への視点</h4><p>日本で孤立感はさらに強くなるのでは？</p></div><div class="origin-card"><div class="origin-num">03</div><h4>団体の使命</h4><p>孤立感解消への強い思い</p></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Origin</span></div><h2 class="sec-heading">原体験：海外で感じた「外国人としての孤立」</h2></div>
+    <div class="grid grid-3 fade-in">
+      <div class="origin-card"><div class="origin-num">01</div><h4>団体発足の背景</h4><p>留学を通して外国人としての孤立感を経験</p></div>
+      <div class="origin-card"><div class="origin-num">02</div><h4>日本社会への視点</h4><p>日本で孤立感はさらに強くなるのでは？</p></div>
+      <div class="origin-card"><div class="origin-num">03</div><h4>団体の使命</h4><p>孤立感解消への強い思い</p></div>
+    </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">日本語学校生の約7割が<br>日本人との継続的な交流ができていない</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>The gap</span></div><h2 class="sec-heading">日本語学校生の約7割が<br>日本人との継続的な交流ができていない</h2></div>
     <div class="card fade-in" style="max-width:620px;margin:0 auto"><div class="bar-wrap">
-      <div class="bar-item"><div class="bar-head"><span>日本人と遊びに行ったことがない</span><span class="pct">40%</span></div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--blue)"></div></div></div>
-      <div class="bar-item"><div class="bar-head"><span>遊びに行ったが連絡が途絶えた</span><span class="pct">30%</span></div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#6889d6"></div></div></div>
-      <div class="bar-item"><div class="bar-head"><span>その他</span><span class="pct">30%</span></div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#b0c4ef"></div></div></div>
-      <p style="font-size:13px;color:var(--text-muted);margin-top:20px;border-top:1px solid #eef0f4;padding-top:10px">※東京都内の日本語学校に通う留学生へのインタビュー調査（n=50、2023年）</p>
+      <div class="bar-item"><div class="bar-head"><span>日本人と遊びに行ったことがない</span><span class="pct">40%</span></div><div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--cobalt)"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span>遊びに行ったが連絡が途絶えた</span><span class="pct">30%</span></div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#5c78c4"></div></div></div>
+      <div class="bar-item"><div class="bar-head"><span>その他</span><span class="pct">30%</span></div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#a5b3d8"></div></div></div>
+      <p class="bar-src">※東京都内の日本語学校に通う留学生へのインタビュー調査（n=50、2023年）</p>
     </div></div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">日本人の在留外国人への意識</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Public attitudes</span></div><h2 class="sec-heading">日本人の在留外国人への意識</h2></div>
     <div class="aw-grid fade-in">
-      <div class="aw-item md"><div class="svg-w"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="76" fill="none" stroke="#dddfe5" stroke-width="18"/><circle cx="100" cy="100" r="76" fill="none" stroke="var(--orange)" stroke-width="18" stroke-dasharray="324.7 152.8" stroke-linecap="round" transform="rotate(-90 100 100)"/></svg><div class="aw-ctr"><div class="p">68<span style="font-size:20px">%</span></div></div></div><div class="aw-lbl">外国人に対する<br>差別や偏見がある</div></div>
-      <div class="aw-item lg"><div class="svg-w"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="95" fill="none" stroke="#dddfe5" stroke-width="24"/><circle cx="120" cy="120" r="95" fill="none" stroke="var(--blue)" stroke-width="24" stroke-dasharray="435.7 161.2" stroke-linecap="round" transform="rotate(-90 120 120)"/></svg><div class="aw-ctr"><div class="p">73<span style="font-size:22px">%</span></div></div></div><div class="aw-lbl" style="font-size:17px;font-weight:600">外国人との<br>交流がない。</div></div>
-      <div class="aw-item md"><div class="svg-w"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="76" fill="none" stroke="#dddfe5" stroke-width="18"/><circle cx="100" cy="100" r="76" fill="none" stroke="#3b82f6" stroke-width="18" stroke-dasharray="277.0 200.5" stroke-linecap="round" transform="rotate(-90 100 100)"/></svg><div class="aw-ctr"><div class="p">58<span style="font-size:20px">%</span></div></div></div><div class="aw-lbl">外国人と日本人との<br>交流の場の機会を<br>増やすべき。</div></div>
+      <div class="aw-item md"><div class="svg-w"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="76" fill="none" stroke="rgba(19,36,32,.1)" stroke-width="14"/><circle cx="100" cy="100" r="76" fill="none" stroke="var(--accent)" stroke-width="14" stroke-dasharray="324.7 152.8" transform="rotate(-90 100 100)"/></svg><div class="aw-ctr"><div class="p">68<span style="font-size:20px">%</span></div></div></div><div class="aw-lbl">外国人に対する<br>差別や偏見がある</div></div>
+      <div class="aw-item lg"><div class="svg-w"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="95" fill="none" stroke="rgba(19,36,32,.1)" stroke-width="18"/><circle cx="120" cy="120" r="95" fill="none" stroke="var(--cobalt)" stroke-width="18" stroke-dasharray="435.7 161.2" transform="rotate(-90 120 120)"/></svg><div class="aw-ctr"><div class="p">73<span style="font-size:22px">%</span></div></div></div><div class="aw-lbl">外国人との<br>交流がない</div></div>
+      <div class="aw-item md"><div class="svg-w"><svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="76" fill="none" stroke="rgba(19,36,32,.1)" stroke-width="14"/><circle cx="100" cy="100" r="76" fill="none" stroke="var(--pine)" stroke-width="14" stroke-dasharray="277.0 200.5" transform="rotate(-90 100 100)"/></svg><div class="aw-ctr"><div class="p">58<span style="font-size:20px">%</span></div></div></div><div class="aw-lbl">外国人と日本人との<br>交流の場の機会を<br>増やすべき</div></div>
     </div>
-    <p class="fade-in fade-d1" style="font-size:13px;color:var(--text-muted);margin-top:32px;text-align:center">出典：出入国在留管理庁「外国人との共生に関する意識調査」2025（日本人対象）</p>
+    <p class="sec-note fade-in fade-d1" style="text-align:center">出典：出入国在留管理庁「外国人との共生に関する意識調査」2025（日本人対象）</p>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">在留外国人が抱える3つの課題</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Three issues</span></div><h2 class="sec-heading">在留外国人が抱える3つの課題</h2></div>
     <div class="issues-stack fade-in">
-      <div class="issue-row"><div class="issue-node" style="background:#3b82f6" onclick="openIssue(0)" aria-hidden="true"><span class="ico"><svg width="22" height="22"><use href="#ico-people"/></svg></span></div><div class="issue-card-wrap"><div class="issue-card-inner" style="border-left:4px solid #3b82f6" onclick="openIssue(0)" role="button" tabindex="0" aria-label="「交流」の課題の詳細を見る"><h4 style="color:#3b82f6">①「交流」の課題</h4><p>個人同士が出会い協働する"場"が設計不十分。言語・機会・心の3つの壁が継続的な交流を阻む。</p><div class="tap-hint">タップして詳細を見る</div></div></div></div>
-      <div class="issue-row"><div class="issue-node" style="background:#22c55e" onclick="openIssue(1)" aria-hidden="true"><span class="ico"><svg width="22" height="22"><use href="#ico-doc"/></svg></span></div><div class="issue-card-wrap"><div class="issue-card-inner" style="border-left:4px solid #22c55e" onclick="openIssue(1)" role="button" tabindex="0" aria-label="「情報」の課題の詳細を見る"><h4 style="color:#16a34a">②「情報」の課題</h4><p>必要な情報を探す→理解する→行動に移す→共有するという流れが途中で途切れる。</p><div class="tap-hint">タップして詳細を見る</div></div></div></div>
-      <div class="issue-row"><div class="issue-node" style="background:#a855f7" onclick="openIssue(2)" aria-hidden="true"><span class="ico"><svg width="22" height="22"><use href="#ico-pillars"/></svg></span></div><div class="issue-card-wrap"><div class="issue-card-inner" style="border-left:4px solid #a855f7" onclick="openIssue(2)" role="button" tabindex="0" aria-label="「環境」の課題の詳細を見る"><h4 style="color:#9333ea">③「環境」の課題</h4><p>自治体の受け入れ態勢未整備と鎖国的コミュニティの孤立化が既住民との対立を招く。</p><div class="tap-hint">タップして詳細を見る</div></div></div></div>
+      <div class="issue-row" style="--c:#1b3fa8">
+        <div class="issue-node" onclick="openIssue(0)" aria-hidden="true"><span class="ico"><svg width="22" height="22"><use href="#ico-people"/></svg></span></div>
+        <div class="issue-card-wrap"><div class="issue-card-inner" onclick="openIssue(0)" role="button" tabindex="0" aria-label="「交流」の課題の詳細を見る">
+          <div class="issue-tag">01 / EXCHANGE</div>
+          <h4>「交流」の課題</h4>
+          <p>個人同士が出会い協働する“場”が設計不十分。言語・機会・心の3つの壁が継続的な交流を阻む。</p>
+          <div class="tap-hint">詳細を見る</div>
+        </div></div>
+      </div>
+      <div class="issue-row" style="--c:#0e6b52">
+        <div class="issue-node" onclick="openIssue(1)" aria-hidden="true"><span class="ico"><svg width="22" height="22"><use href="#ico-doc"/></svg></span></div>
+        <div class="issue-card-wrap"><div class="issue-card-inner" onclick="openIssue(1)" role="button" tabindex="0" aria-label="「情報」の課題の詳細を見る">
+          <div class="issue-tag">02 / INFORMATION</div>
+          <h4>「情報」の課題</h4>
+          <p>必要な情報を探す→理解する→行動に移す→共有するという流れが途中で途切れる。</p>
+          <div class="tap-hint">詳細を見る</div>
+        </div></div>
+      </div>
+      <div class="issue-row" style="--c:#a82f38">
+        <div class="issue-node" onclick="openIssue(2)" aria-hidden="true"><span class="ico"><svg width="22" height="22"><use href="#ico-pillars"/></svg></span></div>
+        <div class="issue-card-wrap"><div class="issue-card-inner" onclick="openIssue(2)" role="button" tabindex="0" aria-label="「環境」の課題の詳細を見る">
+          <div class="issue-tag">03 / ENVIRONMENT</div>
+          <h4>「環境」の課題</h4>
+          <p>自治体の受け入れ態勢未整備と鎖国的コミュニティの孤立化が既住民との対立を招く。</p>
+          <div class="tap-hint">詳細を見る</div>
+        </div></div>
+      </div>
     </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">増加する在留外国人</h2></div>
-    <div class="grid grid-3"><div class="mkt-card fade-in"><div class="num">412.5万人</div><div class="lbl">在留外国人数</div><div class="chg">前年比 +35万人</div></div><div class="mkt-card fade-in fade-d1"><div class="num">257万人</div><div class="lbl">外国人労働者数</div><div class="chg">前年比 +25万人</div></div><div class="mkt-card fade-in fade-d2"><div class="num">33万人</div><div class="lbl">留学生数</div><div class="chg">前年比 +5.8万人</div></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Market</span></div><h2 class="sec-heading">増加する在留外国人</h2></div>
+    <div class="grid grid-3">
+      <div class="mkt-card fade-in"><div class="num">412.5万人</div><div class="lbl">在留外国人数</div><div class="chg">前年比 +35万人</div></div>
+      <div class="mkt-card fade-in fade-d1"><div class="num">257万人</div><div class="lbl">外国人労働者数</div><div class="chg">前年比 +25万人</div></div>
+      <div class="mkt-card fade-in fade-d2"><div class="num">33万人</div><div class="lbl">留学生数</div><div class="chg">前年比 +5.8万人</div></div>
+    </div>
   </div></div>
 </div>
 <div class="modal-overlay" id="issueModal" onclick="closeIssue(event)"><div class="modal-content" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeIssue()" aria-label="閉じる">&#10005;</button><div class="modal-header" id="issueModalHeader"></div><div class="modal-body" id="issueModalBody"></div></div></div>
 
 <!-- PAGE 3 -->
 <div class="page" id="page-3">
-  <div style="height:64px"></div>
+  <div class="page-top"></div>
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">5つの事業で群戦略を展開</h2></div>
-    <p class="fade-in" style="font-size:16px;color:var(--text-sub);line-height:1.9;max-width:780px;margin-bottom:32px">各事業同士のシナジー増大を目指し、一つの事業のユーザーになると他事業にも参加せざるを得なくなるエンクロージャー制度で、参加者一人当たりの複数事業参加を促進。</p>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Business</span></div><h2 class="sec-heading">5つの事業で群戦略を展開</h2></div>
+    <p class="lead fade-in">各事業同士のシナジー増大を目指し、一つの事業のユーザーになると他事業にも参加せざるを得なくなるエンクロージャー制度で、参加者一人当たりの複数事業参加を促進。</p>
 
-    <!-- Pentagon diagram -->
+    <!-- 5事業が中心の「+」に収束する。線は drawPentaLines() が引く -->
     <div class="penta-wrap fade-in" id="pentaWrap">
-      <!-- Nodes: top, upper-right, lower-right, lower-left, upper-left -->
-      <div class="penta-node" style="top:4%;left:50%" onclick="showBiz(0)" role="button" tabindex="0" aria-label="International Friendship Tour の詳細を見る">
-        <div class="p-circle" style="background:#3b82f6"><span class="ico"><svg width="26" height="26"><use href="#ico-globe"/></svg></span></div>
+      <div class="penta-core" aria-hidden="true">+</div>
+      <div class="penta-node" style="top:4%;left:50%;--c:#1b3fa8" onclick="showBiz(0)" role="button" tabindex="0" aria-label="International Friendship Tour の詳細を見る">
+        <div class="p-circle"><span class="ico"><svg width="24" height="24"><use href="#ico-globe"/></svg></span></div>
         <div class="p-name">International<br>Friendship Tour</div>
         <div class="p-seg">交流推進</div>
       </div>
-      <div class="penta-node" style="top:32%;left:93%" onclick="showBiz(1)" role="button" tabindex="0" aria-label="Ordermade の詳細を見る">
-        <div class="p-circle" style="background:#475569"><span class="ico"><svg width="26" height="26"><use href="#ico-gear"/></svg></span></div>
+      <div class="penta-node" style="top:32%;left:93%;--c:#55606b" onclick="showBiz(1)" role="button" tabindex="0" aria-label="Ordermade の詳細を見る">
+        <div class="p-circle"><span class="ico"><svg width="24" height="24"><use href="#ico-gear"/></svg></span></div>
         <div class="p-name">Ordermade</div>
         <div class="p-seg">交流推進</div>
       </div>
-      <div class="penta-node" style="top:88%;left:76%" onclick="showBiz(2)" role="button" tabindex="0" aria-label="connec+a community の詳細を見る">
-        <div class="p-circle" style="background:#0ea5e9"><span class="ico"><svg width="26" height="26"><use href="#ico-chat"/></svg></span></div>
+      <div class="penta-node" style="top:88%;left:76%;--c:#3c7dbf" onclick="showBiz(2)" role="button" tabindex="0" aria-label="connec+a community の詳細を見る">
+        <div class="p-circle"><span class="ico"><svg width="24" height="24"><use href="#ico-chat"/></svg></span></div>
         <div class="p-name">connec+a<br>community</div>
         <div class="p-seg">交流推進</div>
       </div>
-      <div class="penta-node" style="top:88%;left:24%" onclick="showBiz(3)" role="button" tabindex="0" aria-label="connec+a hub の詳細を見る">
-        <div class="p-circle" style="background:#22c55e"><span class="ico"><svg width="26" height="26"><use href="#ico-phone"/></svg></span></div>
+      <div class="penta-node" style="top:88%;left:24%;--c:#0e6b52" onclick="showBiz(3)" role="button" tabindex="0" aria-label="connec+a hub の詳細を見る">
+        <div class="p-circle"><span class="ico"><svg width="24" height="24"><use href="#ico-phone"/></svg></span></div>
         <div class="p-name">connec+a hub</div>
         <div class="p-seg">情報PF</div>
       </div>
-      <div class="penta-node" style="top:32%;left:7%" onclick="showBiz(4)" role="button" tabindex="0" aria-label="Public Affairs の詳細を見る">
-        <div class="p-circle" style="background:var(--orange)"><span class="ico"><svg width="26" height="26"><use href="#ico-pillars"/></svg></span></div>
+      <div class="penta-node" style="top:32%;left:7%;--c:#e0801e" onclick="showBiz(4)" role="button" tabindex="0" aria-label="Public Affairs の詳細を見る">
+        <div class="p-circle"><span class="ico"><svg width="24" height="24"><use href="#ico-pillars"/></svg></span></div>
         <div class="p-name">Public Affairs</div>
         <div class="p-seg">公共コンサル</div>
       </div>
     </div>
 
-    <!-- Detail panel -->
     <div class="penta-detail" id="bizDetail"></div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">connec+aの競争優位性</h2></div>
-    <div class="grid grid-2"><div class="adv-card fade-in"><div class="num">①</div><p>少人数・ミッション型・再会導線で、関係が続くサービスを設計</p></div><div class="adv-card fade-in fade-d1"><div class="num">②</div><p>行動ログの"一次データ"を、PAで政策・運用に直結させる</p></div><div class="adv-card fade-in fade-d2"><div class="num">③</div><p>IF・OM・CC→ hub→ PA の包括的支援</p></div><div class="adv-card fade-in fade-d3"><div class="num">④</div><p>低障壁な価格と導入容易性</p></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Advantage</span></div><h2 class="sec-heading">connec+aの競争優位性</h2></div>
+    <div class="grid grid-2">
+      <div class="adv-card fade-in"><div class="adv-key">再会設計 / RE-MEETING</div><p>少人数・ミッション型・再会導線で、関係が続くサービスを設計</p></div>
+      <div class="adv-card fade-in fade-d1"><div class="adv-key">一次データ / FIRST-PARTY DATA</div><p>行動ログの“一次データ”を、PAで政策・運用に直結させる</p></div>
+      <div class="adv-card fade-in fade-d2"><div class="adv-key">群戦略 / SWARM</div><p>IF・OM・CC → hub → PA の包括的支援</p></div>
+      <div class="adv-card fade-in fade-d3"><div class="adv-key">低障壁 / LOW BARRIER</div><p>低障壁な価格と導入容易性</p></div>
+    </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">3つの壁を解決する</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>The three walls</span></div><h2 class="sec-heading">3つの壁を解決する</h2></div>
     <div class="grid grid-3">
-      <div class="sol-card fade-in"><span class="ico" style="color:var(--blue)"><svg width="32" height="32"><use href="#ico-ticket"/></svg></span><h4>機会の壁</h4><p>群戦略で参加者に多くの交流機会を提供。語学学校にカスタマイズされたイベントで参加者にリーチ。</p></div>
-      <div class="sol-card fade-in fade-d1"><span class="ico" style="color:var(--blue)"><svg width="32" height="32"><use href="#ico-speech"/></svg></span><h4>言語の壁</h4><p>希望の言語で話せる環境を創出。イベント・プラットフォームも全て日英両言語で運営。</p></div>
-      <div class="sol-card fade-in fade-d2"><span class="ico" style="color:var(--blue)"><svg width="32" height="32"><use href="#ico-heart"/></svg></span><h4>心の壁</h4><p>小規模で継続的な国際交流機会を提供し親密感を創出。"一期一会"で終わらせない。</p></div>
+      <div class="sol-card fade-in"><span class="ico"><svg width="28" height="28"><use href="#ico-ticket"/></svg></span><h4>機会の壁</h4><p>群戦略で参加者に多くの交流機会を提供。語学学校にカスタマイズされたイベントで参加者にリーチ。</p></div>
+      <div class="sol-card fade-in fade-d1"><span class="ico"><svg width="28" height="28"><use href="#ico-speech"/></svg></span><h4>言語の壁</h4><p>希望の言語で話せる環境を創出。イベント・プラットフォームも全て日英両言語で運営。</p></div>
+      <div class="sol-card fade-in fade-d2"><span class="ico"><svg width="28" height="28"><use href="#ico-heart"/></svg></span><h4>心の壁</h4><p>小規模で継続的な国際交流機会を提供し親密感を創出。“一期一会”で終わらせない。</p></div>
     </div>
   </div></div>
 </div>
 
 <!-- PAGE 4 -->
 <div class="page" id="page-4">
-  <div style="height:64px"></div>
+  <div class="page-top"></div>
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">2026上半期</h2></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Roadmap 2026 H1</span></div><h2 class="sec-heading">2026上半期</h2></div>
     <div class="grid grid-2">
-      <div class="road-card fade-in"><h3 style="color:var(--orange)">交流推進事業</h3><div class="subtitle">「参加者のプライベートでの交流を促す」を軸に</div><div class="road-item"><span class="arrow" style="color:var(--orange)">&#9656;</span><span>IF/CCのイベント/PFの継続的な改善・満足度向上</span></div><div class="road-item"><span class="arrow" style="color:var(--orange)">&#9656;</span><span>Ordermadeの顧客獲得と定期プロジェクト獲得</span></div><div class="road-item"><span class="arrow" style="color:var(--orange)">&#9656;</span><span>IF&#215;OM&#215;CC間で一人当たりの参加数増加を促進</span></div><div class="road-item"><span class="arrow" style="color:var(--orange)">&#9656;</span><span>共同イベント開催（2件確定済み）</span></div><div class="road-item"><span class="arrow" style="color:var(--orange)">&#9656;</span><span>新規事業立案（継続的な交流をより促進）</span></div></div>
-      <div class="road-card fade-in fade-d1"><h3 style="color:#16a34a">情報プラットフォーム事業</h3><div class="subtitle">ベータ版から本実装への準備段階</div><div class="road-item"><span class="arrow" style="color:#16a34a">&#9656;</span><span>主要機能を搭載したベータ版構築・ローンチ</span></div><div class="road-item"><span class="arrow" style="color:#16a34a">&#9656;</span><span>交流推進事業イベント/PFと連携</span></div><div class="road-item"><span class="arrow" style="color:#16a34a">&#9656;</span><span>認知拡大と改善をもとにリリース版構築開始</span></div><div class="road-item"><span class="arrow" style="color:#16a34a">&#9656;</span><span>2026年度上半期リリース</span></div></div>
+      <div class="road-card fade-in">
+        <h3>交流推進事業</h3>
+        <div class="subtitle">「参加者のプライベートでの交流を促す」を軸に</div>
+        <div class="road-item"><span class="mk">+</span><span>IF/CCのイベント/PFの継続的な改善・満足度向上</span></div>
+        <div class="road-item"><span class="mk">+</span><span>Ordermadeの顧客獲得と定期プロジェクト獲得</span></div>
+        <div class="road-item"><span class="mk">+</span><span>IF&#215;OM&#215;CC間で一人当たりの参加数増加を促進</span></div>
+        <div class="road-item"><span class="mk">+</span><span>共同イベント開催（2件確定済み）</span></div>
+        <div class="road-item"><span class="mk">+</span><span>新規事業立案（継続的な交流をより促進）</span></div>
+      </div>
+      <div class="road-card fade-in fade-d1">
+        <h3>情報プラットフォーム事業</h3>
+        <div class="subtitle">ベータ版から本実装への準備段階</div>
+        <div class="road-item"><span class="mk">+</span><span>主要機能を搭載したベータ版構築・ローンチ</span></div>
+        <div class="road-item"><span class="mk">+</span><span>交流推進事業イベント/PFと連携</span></div>
+        <div class="road-item"><span class="mk">+</span><span>認知拡大と改善をもとにリリース版構築開始</span></div>
+        <div class="road-item"><span class="mk">+</span><span>2026年度上半期リリース</span></div>
+      </div>
     </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">Connec+a Group の創設へ</h2></div>
-    <div class="group-box fade-in"><p>connec+aは次の進化として「connec+a Group」を立ち上げる。IF Tour / Ordermade / CCの3事業はNPO法人として場づくりを継続し、HubとPublic Affairsは株式会社の営利事業として展開。</p><div class="group-grid"><div class="group-cell"><div class="tag">NPO法人</div><div class="val">IF Tour / OM / CC</div></div><div class="group-cell"><div class="tag">株式会社</div><div class="val">Hub / Public Affairs</div></div></div><div class="group-note">任意団体THTS Educationをはじめ、理念を共有する学生団体を傘下に迎え、群戦略による持続的な成長を実現。</div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Group</span></div><h2 class="sec-heading">Connec+a Group の創設へ</h2></div>
+    <div class="group-box fade-in">
+      <p>connec+aは次の進化として「connec+a Group」を立ち上げる。IF Tour / Ordermade / CCの3事業はNPO法人として場づくりを継続し、HubとPublic Affairsは株式会社の営利事業として展開。</p>
+      <div class="group-grid">
+        <div class="group-cell"><div class="tag">NPO法人</div><div class="val">IF Tour / OM / CC</div></div>
+        <div class="group-cell"><div class="tag">株式会社</div><div class="val">Hub / Public Affairs</div></div>
+      </div>
+      <div class="group-note">任意団体THTS Educationをはじめ、理念を共有する学生団体を傘下に迎え、群戦略による持続的な成長を実現。</div>
+    </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">受賞歴</h2></div>
-    <div class="grid grid-2"><div class="award-card fade-in"><div class="big">大賞</div><p>2022-23年度 東京都教育委員会後援<br>NPO法人Curiosity主催<br>高校生世代チャレンジプログラム</p></div><div class="award-card fade-in fade-d1"><div class="big">入賞</div><p>2023年度 東京都教育委員会主催<br>チャレンジアシストプログラム<br>歴代最年少：18歳3ヶ月</p></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Awards</span></div><h2 class="sec-heading">受賞歴</h2></div>
+    <div class="grid grid-2">
+      <div class="award-card fade-in"><div class="big">大賞</div><p>2022-23年度 東京都教育委員会後援<br>NPO法人Curiosity主催<br>高校生世代チャレンジプログラム</p></div>
+      <div class="award-card fade-in fade-d1"><div class="big">入賞</div><p>2023年度 東京都教育委員会主催<br>チャレンジアシストプログラム<br>歴代最年少：18歳3ヶ月</p></div>
+    </div>
   </div></div>
 </div>
 
 <!-- PAGE 5 -->
 <div class="page" id="page-5">
-  <div style="height:64px"></div>
+  <div class="page-top"></div>
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">バリュー</h2></div>
-    <div class="grid grid-3"><div class="val-card fade-in"><div class="en">Goal Oriented Philosophy</div><div class="ja">- 常にゴールを見据える -</div><p>どんな小さな行動も大きな目的につながっている。常にゴールを意識し、取り組みに意味を見つけながら前に進めていく。</p></div><div class="val-card fade-in fade-d1"><div class="en">Sense of Ownership</div><div class="ja">- 自分ごととして挑む -</div><p>国籍・文化・宗教・言語の違いを超えて、課題を「自分のこと」として受け止める。仲間とともに成果をつくり上げる。</p></div><div class="val-card fade-in fade-d2"><div class="en">Be Inefficient</div><div class="ja">- 偶発から価値を創造する -</div><p>効率的な道だけでは出会えないものがある。遠回りや偶然の出会いの中にこそ、新しい発想や価値が生まれる。</p></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Values</span></div><h2 class="sec-heading">バリュー</h2></div>
+    <div class="grid grid-3">
+      <div class="val-card fade-in"><div class="en">Goal Oriented Philosophy</div><div class="ja">常にゴールを見据える</div><p>どんな小さな行動も大きな目的につながっている。常にゴールを意識し、取り組みに意味を見つけながら前に進めていく。</p></div>
+      <div class="val-card fade-in fade-d1"><div class="en">Sense of Ownership</div><div class="ja">自分ごととして挑む</div><p>国籍・文化・宗教・言語の違いを超えて、課題を「自分のこと」として受け止める。仲間とともに成果をつくり上げる。</p></div>
+      <div class="val-card fade-in fade-d2"><div class="en">Be Inefficient</div><div class="ja">偶発から価値を創造する</div><p>効率的な道だけでは出会えないものがある。遠回りや偶然の出会いの中にこそ、新しい発想や価値が生まれる。</p></div>
+    </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">connec+aを動かす</h2></div>
-    <div class="grid grid-3"><div class="iv-card fade-in"><h4>守破離</h4><p>初めは型を身につけ守ることから。良いと思ったことはどんどん提案し新しさを取り入れ続ける。</p></div><div class="iv-card fade-in fade-d1"><h4>やりがい作り</h4><p>働きやすい環境は大切。自分が何にやりがいを感じているのか自己分析し目標設定。</p></div><div class="iv-card fade-in fade-d2"><h4>フラットネス</h4><p>ポジションはあるけど、ない。自分がやりたいと思ったことはどんどん提案。</p></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Principles</span></div><h2 class="sec-heading">connec+aを動かす</h2></div>
+    <div class="grid grid-3">
+      <div class="iv-card fade-in"><h4>守破離</h4><p>初めは型を身につけ守ることから。良いと思ったことはどんどん提案し新しさを取り入れ続ける。</p></div>
+      <div class="iv-card fade-in fade-d1"><h4>やりがい作り</h4><p>働きやすい環境は大切。自分が何にやりがいを感じているのか自己分析し目標設定。</p></div>
+      <div class="iv-card fade-in fade-d2"><h4>フラットネス</h4><p>ポジションはあるけど、ない。自分がやりたいと思ったことはどんどん提案。</p></div>
+    </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">制度</h2></div>
-    <div class="grid grid-sm"><div class="sys-chip fade-in">MVP制度</div><div class="sys-chip fade-in fade-d1">進学/就職サポート</div><div class="sys-chip fade-in fade-d1">新規メンバー研修</div><div class="sys-chip fade-in fade-d2">マネージャー研修</div><div class="sys-chip fade-in fade-d2">生成AI研修</div><div class="sys-chip fade-in fade-d3">挑戦支援プログラム</div><div class="sys-chip fade-in fade-d3">交通費支給</div><div class="sys-chip fade-in fade-d4">PC貸与</div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Support</span></div><h2 class="sec-heading">制度</h2></div>
+    <div class="grid grid-sm">
+      <div class="sys-chip fade-in">MVP制度</div>
+      <div class="sys-chip fade-in fade-d1">進学/就職サポート</div>
+      <div class="sys-chip fade-in fade-d1">新規メンバー研修</div>
+      <div class="sys-chip fade-in fade-d2">マネージャー研修</div>
+      <div class="sys-chip fade-in fade-d2">生成AI研修</div>
+      <div class="sys-chip fade-in fade-d3">挑戦支援プログラム</div>
+      <div class="sys-chip fade-in fade-d3">交通費支給</div>
+      <div class="sys-chip fade-in fade-d4">PC貸与</div>
+    </div>
   </div></div>
+
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">採用プロセス</h2></div>
-    <div class="recruit-flow fade-in"><div class="recruit-step"><div class="step">STEP 1</div><div class="title">申し込みアンケート</div></div><div class="recruit-line"></div><div class="recruit-step"><div class="step">STEP 2</div><div class="title">マネージャー面談</div></div><div class="recruit-line"></div><div class="recruit-step"><div class="step">STEP 3</div><div class="title">役員面談前アンケート</div></div><div class="recruit-line"></div><div class="recruit-step"><div class="step">STEP 4</div><div class="title">役員面談→ジョイン</div></div></div>
-    <div class="criteria-box fade-in fade-d1"><h4>connec+aが求める人材</h4><div class="criteria-tags"><span class="criteria-tag">ビジョンへの共感と意欲</span><span class="criteria-tag">異文化理解とコミュニケーション能力</span><span class="criteria-tag">語学能力</span><span class="criteria-tag">イベント企画/運営経験</span><span class="criteria-tag">チームワークと協調性</span></div></div>
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Process</span></div><h2 class="sec-heading">採用プロセス</h2></div>
+    <div class="recruit-flow fade-in">
+      <div class="recruit-step"><div class="step">STEP 1</div><div class="title">申し込みアンケート</div></div>
+      <div class="recruit-line"></div>
+      <div class="recruit-step"><div class="step">STEP 2</div><div class="title">マネージャー面談</div></div>
+      <div class="recruit-line"></div>
+      <div class="recruit-step"><div class="step">STEP 3</div><div class="title">役員面談前アンケート</div></div>
+      <div class="recruit-line"></div>
+      <div class="recruit-step"><div class="step">STEP 4</div><div class="title">役員面談 → ジョイン</div></div>
+    </div>
+    <div class="criteria-box fade-in fade-d1">
+      <h4>connec+aが求める人材</h4>
+      <div class="criteria-tags">
+        <span class="criteria-tag">ビジョンへの共感と意欲</span>
+        <span class="criteria-tag">異文化理解とコミュニケーション能力</span>
+        <span class="criteria-tag">語学能力</span>
+        <span class="criteria-tag">イベント企画/運営経験</span>
+        <span class="criteria-tag">チームワークと協調性</span>
+      </div>
+    </div>
   </div></div>
 </div>
 
 <!-- PAGE 6 -->
 <div class="page" id="page-6">
-  <div style="height:64px"></div>
+  <div class="page-top"></div>
   <div class="section"><div class="section-inner">
-    <div class="sec-title-wrap fade-in"><h2 class="sec-heading">お問い合わせ</h2></div>
-    <div style="max-width:640px;margin:0 auto">
+    <div class="sec-title-wrap fade-in"><div class="sec-eyebrow"><span class="mk">+</span><span>Contact</span></div><h2 class="sec-heading">お問い合わせ</h2></div>
+    <div style="max-width:640px">
       <form class="contact-form fade-in" id="contactForm" onsubmit="submitContact(event)">
         <div class="cf-field">
           <label class="cf-label" for="cfName">お名前 <span class="cf-req">*</span></label>
@@ -268,13 +415,22 @@
         <input class="cf-honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="cf-submit" type="submit" id="cfSubmitBtn">送信する</button>
       </form>
-      <div id="contactMsg" style="display:none;margin-top:20px;padding:16px 20px;border-radius:12px;font-size:15px;text-align:center"></div>
+      <div id="contactMsg" style="display:none;margin-top:22px;padding:16px 20px;border-radius:3px;font-size:14px"></div>
     </div>
   </div></div>
 </div>
 </main>
 
-<footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo"><span class="c1">connec</span><span class="c2">+a</span></div><p class="footer-desc">学生団体connec+a<br>Leading the evolutionary continuity of culture</p></div><div class="footer-links"><a href="#" onclick="goPage(0);return false">TOP</a><a href="#" onclick="goPage(1);return false">組織概要</a><a href="#" onclick="goPage(2);return false">課題</a><a href="#" onclick="goPage(3);return false">事業内容</a><a href="#" onclick="goPage(4);return false">戦略</a><a href="#" onclick="goPage(5);return false">カルチャー</a><a href="#" onclick="goPage(6);return false">お問い合わせ</a></div></div><div class="footer-bottom"><p>&copy;2026 connec+a All rights reserved.</p></div></div></footer>
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">connec<span class="c2">+a</span></div>
+      <p class="footer-desc">学生団体connec+a<br>Leading the evolutionary continuity of culture</p>
+    </div>
+    <div class="footer-links"><a href="#" onclick="goPage(0);return false">TOP</a><a href="#" onclick="goPage(1);return false">組織概要</a><a href="#" onclick="goPage(2);return false">課題</a><a href="#" onclick="goPage(3);return false">事業内容</a><a href="#" onclick="goPage(4);return false">戦略</a><a href="#" onclick="goPage(5);return false">カルチャー</a><a href="#" onclick="goPage(6);return false">お問い合わせ</a></div>
+  </div>
+  <div class="footer-bottom"><p>&copy;2026 connec+a All rights reserved.</p></div>
+</div></footer>
 
 <script src="main.js" defer></script>
 </body>
