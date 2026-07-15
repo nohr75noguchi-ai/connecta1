@@ -421,8 +421,8 @@ a{color:var(--cobalt)}
 
 /* ── VALUES ────────────────────────────────────────────── */
 .val-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;height:100%}
-.val-card .en{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--ink);margin-bottom:6px}
-.val-card .ja{font-family:var(--display);font-size:17px;font-weight:700;color:var(--accent-ink);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.val-card .en{font-family:'Dancing Script',cursive;font-size:26px;font-weight:600;line-height:1.2;color:var(--accent-ink);margin-bottom:8px}
+.val-card .ja{font-family:var(--display);font-size:17px;font-weight:700;color:var(--ink);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .val-card p{font-size:14px;color:var(--ink-3);line-height:1.9}
 
 .iv-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
