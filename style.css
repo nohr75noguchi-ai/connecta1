@@ -36,11 +36,13 @@ html{scroll-behavior:smooth}
   --slate:#55606b;
   --azure:#3c7dbf;
 
-  /* 文字・数字とも同じ和文フォントで組む。¥・%・→・「万人／名」等の
-     記号や単位まで一貫して表示させるため、数字専用の欧文モノスペースは使わない。 */
+  /* 英字ラベル・数字は Times New Roman で組む（エディトリアルな明朝調）。
+     「万人／名」等の和文単位は Zen Kaku Gothic New にフォールバックさせ、
+     ¥・%・→ 等の記号まで一貫して表示させる。
+     バリューの英語ラベルのみ Great Vibes を個別指定するので対象外。 */
   --display:'Shippori Mincho B1',serif;
   --sans:'Zen Kaku Gothic New',sans-serif;
-  --mono:'Zen Kaku Gothic New',sans-serif;
+  --mono:'Times New Roman','Zen Kaku Gothic New',serif;
 
   --radius:3px;
 }
@@ -150,7 +152,7 @@ a{color:var(--cobalt)}
 .hero-mark{
   display:flex;align-items:center;justify-content:center;
   font-family:var(--mono);font-weight:500;line-height:1;
-  font-size:clamp(46px,9vw,104px);letter-spacing:-.035em;color:#eef1f8;
+  font-size:clamp(54px,10.5vw,124px);letter-spacing:-.035em;color:#eef1f8;
   margin-bottom:26px;
 }
 .hm-plus{color:var(--accent);margin:0 .04em}
