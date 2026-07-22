@@ -67,7 +67,8 @@ a{color:var(--cobalt)}
 .nav.scrolled{background:rgba(15,26,60,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-dark)}
 .nav-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
 
-.nav-logo{font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:-.02em;color:#eef1f8;text-decoration:none;white-space:nowrap}
+.nav-logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:-.02em;color:#eef1f8;text-decoration:none;white-space:nowrap}
+.nav-logo-img{height:30px;width:auto;display:block;border-radius:var(--radius)}
 .nav-logo .c2{color:var(--accent)}
 
 .nav-links{display:flex;gap:4px}
